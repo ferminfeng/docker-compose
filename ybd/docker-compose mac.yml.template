@@ -3,7 +3,7 @@ services:
 
   nginx_php:
     container_name: nginx_php
-    image: ferminfu/nginx_php:v1.2
+    image: ferminfu/nginx_php:v1.4
     privileged: true
     restart: always
     volumes:
@@ -11,8 +11,8 @@ services:
       - ./etc/nginx_php/nginx/conf.d:/etc/nginx/conf.d
       - ./etc/nginx_php/php/fpm:/etc/php/7.4/fpm
       - ./etc/nginx_php/php/cli:/etc/php/7.4/cli
-      - ./etc/nginx_php/supervisor/supervisord.conf:/etc/supervisor/supervisord.conf
-      - ./etc/nginx_php/supervisor/supervisor.d:/etc/supervisor/conf.d
+      - ./etc/supervisor/supervisord.conf:/etc/supervisor/supervisord.conf
+      - ./etc/supervisor/conf.d:/etc/supervisor/conf.d
       - ./log/nginx:/usr/share/nginx/logs/
       - ./log/php74:/var/log/php-fpm
       - ./log/supervisor:/var/log/supervisor
@@ -21,7 +21,9 @@ services:
       - 11800:80
       - 11810:1181
       - 11820:1182
+      - 11830:1183
       - 12000:12000
+      - 19000:9000
   
 
   # kyk_openresty:
@@ -44,13 +46,19 @@ services:
 
   # kyk_php74:
   #   container_name: kyk_php74
-  #   build: ./etc/php74/dockerfile/74/
-  #   image: php:7.4-fpm
+  #   # build: ./etc/php74/
+  #   # image: php:7.4-fpm
+  #   image: ferminfu/php74:v1.0
   #   volumes:
   #     - ./etc/php74/php-fpm.conf:/usr/local/etc/php-fpm.conf
   #     - ./etc/php74/php.ini:/usr/local/etc/php/php.ini
+  #     - ./etc/php74/conf.d:/usr/local/etc/php/conf.d
+  #     - ./etc/supervisor:/etc/supervisor
   #     - ./log/php74:/var/log/php-fpm
+  #     - ./log/supervisor:/var/log/supervisor
   #     - /var/www:/var/www
+  #   ports:
+  #     - 12001:12000 # supervisor GUI
   #   privileged: true
   #   restart: always
 
@@ -81,44 +89,18 @@ services:
     restart: always
 
 
-  kyk_mysql57:
-    container_name: kyk_mysql57
-    image: mysql:5.7
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: root
-    volumes:
-      - ./data/mysql57:/var/lib/mysql
-      - ./log/mysql57:/var/log/mysql
-      - ./etc/mysql57/my.cnf:/etc/my.cnf
-    ports:
-      - 13306:3306
-
-
-  kyk_mongo:
-    container_name: kyk_mongo
-    image: mongo
-    restart: always
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: example
-    # command: --serviceExecutor adaptive
-    volumes:
-      - ./data/mongo:/etc/mongo
-    # config: 
-    #   - /etc/mongo/mongod.conf
-
-
-  kyk_mongo_express:
-    container_name: kyk_mongo_express
-    image: mongo-express
-    restart: always
-    ports:
-      - 18082:8081
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: example
-      ME_CONFIG_MONGODB_URL: mongodb://root:example@kyk_mongo:27017/
+  # kyk_mysql57:
+  #   container_name: kyk_mysql57
+  #   image: mysql:5.7
+  #   restart: always
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: root
+  #   volumes:
+  #     - ./data/mysql57:/var/lib/mysql
+  #     - ./log/mysql57:/var/log/mysql
+  #     - ./etc/mysql57/my.cnf:/etc/my.cnf
+  #   ports:
+  #     - 13306:3306
 
 
   kyk_rabbitmq:
@@ -140,6 +122,32 @@ services:
     #   - ./log/rabbitmq:/var/log/rabbitmq/log
 
 
+  # kyk_mongo:
+  #   container_name: kyk_mongo
+  #   image: mongo
+  #   restart: always
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: root
+  #     MONGO_INITDB_ROOT_PASSWORD: example
+  #   # command: --serviceExecutor adaptive
+  #   volumes:
+  #     - ./data/mongo:/etc/mongo
+  #   # config: 
+  #   #   - /etc/mongo/mongod.conf
+
+
+  # kyk_mongo_express:
+  #   container_name: kyk_mongo_express
+  #   image: mongo-express
+  #   restart: always
+  #   ports:
+  #     - 18082:8081
+  #   environment:
+  #     ME_CONFIG_MONGODB_ADMINUSERNAME: root
+  #     ME_CONFIG_MONGODB_ADMINPASSWORD: example
+  #     ME_CONFIG_MONGODB_URL: mongodb://root:example@kyk_mongo:27017/
+
+
   # kyk_jenkins:
   #   container_name: kyk_jenkins
   #   image: jenkins/jenkins:lts
@@ -147,5 +155,4 @@ services:
   #   ports:
   #     - 18083:8080
   #     - 15000:5000
-
 

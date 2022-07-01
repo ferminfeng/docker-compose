@@ -1,6 +1,15 @@
 # 从官方基础版本构建
 FROM php:7.4-fpm
 
+# replace sources.list
+RUN sed -i 's/deb.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
+    && sed -i 's/security.debian.org/mirrors.aliyun.com/g' /etc/apt/sources.list \
+    && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+    && echo "Asia/Shanghai" > /etc/timezone
+
+# 设置时区
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+
 RUN \
     export mc="-j$(nproc)" \
     && apt-get update \
@@ -48,6 +57,14 @@ RUN \
         unixodbc-dev \
         # for mcrypt
         libmcrypt-dev \
+        # for librabbitmq-dev (amqp)
+        librabbitmq-dev \
+        # for curl
+        curl \
+        # for vim
+        vim \
+        # for supervisor
+        supervisor \
     #  ========== docker-php-ext install ===============================
     # for gd
     && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
@@ -113,6 +130,8 @@ RUN \
     && pecl install yar && docker-php-ext-enable yar \
     # for yaf
     && pecl install yaf && docker-php-ext-enable yaf \
+    # for amqp
+    && pecl install amqp && docker-php-ext-enable amqp \
     # clear tmp data
     && docker-php-source delete \
     && apt-get clean all \
@@ -125,3 +144,13 @@ RUN \
 # install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --filename=composer --install-dir=/bin
 ENV PATH /root/.composer/vendor/bin:$PATH
+
+# 切换目录
+WORKDIR /var/www 
+RUN chown -R www-data:www-data /var/www/
+
+# vim
+# RUN echo -e 'set encoding=utf-8' "\n" 'set fileencoding=utf-8' >> ~/.vimrc
+# RUN source ~/.vimrc
+
+# RUN supervisord -c /etc/supervisor/supervisord.conf

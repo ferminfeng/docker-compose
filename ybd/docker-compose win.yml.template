@@ -1,9 +1,9 @@
 version: "3"
 services:
-  
+
   nginx_php:
     container_name: nginx_php
-    image: ferminfu/nginx_php:v1.2
+    image: ferminfu/nginx_php:v1.4
     privileged: true
     restart: always
     volumes:
@@ -11,8 +11,8 @@ services:
       - ./etc/nginx_php/nginx/conf.d:/etc/nginx/conf.d
       - ./etc/nginx_php/php/fpm:/etc/php/7.4/fpm
       - ./etc/nginx_php/php/cli:/etc/php/7.4/cli
-      - ./etc/nginx_php/supervisor/supervisord.conf:/etc/supervisor/supervisord.conf
-      - ./etc/nginx_php/supervisor/supervisor.d:/etc/supervisor/conf.d
+      - ./etc/supervisor/supervisord.conf:/etc/supervisor/supervisord.conf
+      - ./etc/supervisor/conf.d:/etc/supervisor/conf.d
       - ./log/nginx:/usr/share/nginx/logs/
       - ./log/php74:/var/log/php-fpm
       - ./log/supervisor:/var/log/supervisor
@@ -21,38 +21,46 @@ services:
       - 11800:80
       - 11810:1181
       - 11820:1182
+      - 11830:1183
       - 12000:12000
+      - 19000:9000
+  
+
+  # kyk_openresty:
+  #   container_name: kyk_openresty
+  #   image: openresty/openresty:1.15.8.2-7-centos
+  #   ports:
+  #     - 1180:80
+  #     - 1181:1181
+  #     - 1182:1182
+  #     - 1183:1183
+  #   volumes:
+  #     - ./etc/nginx/conf.d/ext:/etc/nginx/conf.d/ext
+  #     - ./etc/nginx/conf.d/vhost:/usr/local/openresty/nginx/conf/vhost
+  #     - ./etc/nginx/conf.d/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
+  #     - ./log/nginx:/var/log/nginx
+  #     - D:/www:/var/www
+  #   privileged: true
+  #   restart: always
 
 
-  kyk_openresty:
-    container_name: kyk_openresty
-    image: openresty/openresty:1.15.8.2-7-centos
-    ports:
-      - 1180:80
-      - 1181:1181
-      - 1182:1182
-      - 1183:1183
-    volumes:
-      - ./etc/nginx/conf.d/ext:/etc/nginx/conf.d/ext
-      - ./etc/nginx/conf.d/vhost:/usr/local/openresty/nginx/conf/vhost
-      - ./etc/nginx/conf.d/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
-      - ./log/nginx:/var/log/nginx
-      - D:/www:/var/www
-    privileged: true
-    restart: always
-
-
-  kyk_php74:
-    container_name: kyk_php74
-    build: ./etc/php74/dockerfile/74/
-    image: php:7.4-fpm
-    volumes:
-      - ./etc/php74/php-fpm.conf:/usr/local/etc/php-fpm.conf
-      - ./etc/php74/php.ini:/usr/local/etc/php/php.ini
-      - ./log/php74:/var/log/php-fpm
-      - D:/www:/var/www
-    privileged: true
-    restart: always
+  # kyk_php74:
+  #   container_name: kyk_php74
+  #   # build: ./etc/php74/
+  #   # image: php:7.4-fpm
+  #   image: ferminfu/php74:v1.0
+  #   volumes:
+  #     - ./etc/php74/php-fpm.conf:/usr/local/etc/php-fpm.conf
+  #     - ./etc/php74/php.ini:/usr/local/etc/php/php.ini
+  #     - ./etc/php74/conf.d:/usr/local/etc/php/conf.d
+  #     - ./etc/supervisor:/etc/supervisor
+  #     - ./log/php74:/var/log/php-fpm
+  #     - ./log/supervisor:/var/log/supervisor
+  #     - D:/www:/var/www
+  #   ports:
+  #     - 12001:12000 # supervisor GUI
+  #   privileged: true
+  #   restart: always
 
 
   kyk_redis:
@@ -95,6 +103,25 @@ services:
   #     - 13306:3306
 
 
+  kyk_rabbitmq:
+    container_name: kyk_rabbitmq
+    image: rabbitmq:management
+    restart: always
+    ports:
+      - 15672:15672
+      - 5672:5672
+      - 25672:25672
+      - 61613:61613
+      - 1883:1883 
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+    # volumes:
+    #   - ./etc/rabbitmq:/etc/rabbitmq 
+    #   - ./data/rabbitmq:/var/lib/rabbitmq 
+    #   - ./log/rabbitmq:/var/log/rabbitmq/log
+
+
   # kyk_mongo:
   #   container_name: kyk_mongo
   #   image: mongo
@@ -119,21 +146,6 @@ services:
   #     ME_CONFIG_MONGODB_ADMINUSERNAME: root
   #     ME_CONFIG_MONGODB_ADMINPASSWORD: example
   #     ME_CONFIG_MONGODB_URL: mongodb://root:example@kyk_mongo:27017/
-
-
-  # kyk_rabbitmq:
-  #   container_name: kyk_rabbitmq
-  #   image: rabbitmq:management
-  #   restart: always
-  #   ports:
-  #     - 15672:15672
-  #     - 5672:5672
-  #     - 25672:25672
-  #     - 61613:61613
-  #     - 1883:1883 
-  #   environment:
-  #     RABBITMQ_DEFAULT_USER: admin
-  #     RABBITMQ_DEFAULT_PASS: admin
 
 
   # kyk_jenkins:

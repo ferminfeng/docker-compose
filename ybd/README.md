@@ -85,7 +85,12 @@
 默认已经自带虚拟主机配置：`ypd.conf`。然后参考这个配置文件来定制自己网站的配置文件。若看不懂这个配置文件，可以直接拷贝网站原来的`vhost`配置文件也可以。
 
 
-### 四、创建默认文件
+### 四、更改时区
+```
+cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+&& echo "Asia/Shanghai" > /etc/timezone \
+&& ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+```
     
 
 ## 附录

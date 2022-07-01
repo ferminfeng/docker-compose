@@ -8,6 +8,8 @@ cat /dev/null > ./log/nginx/error.log
 cat /dev/null > ./log/php74/fpm_access.log
 cat /dev/null > ./log/php74/fpm_error.log
 cat /dev/null > ./log/php74/fpm_slow.log
+cat /dev/null > ./log/php74/php_error.log
+cat /dev/null > ./log/php74/www_error.log
 
 cat /dev/null > ./log/redis/redis.log
 
