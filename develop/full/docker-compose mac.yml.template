@@ -1,0 +1,221 @@
+version: "3"
+services:
+
+# 预留100个端口给nginx 14000-14099
+  full_nginx:
+    container_name: full_nginx
+    image: openresty/openresty:1.15.8.2-7-centos
+    ports: 
+      # 消费券
+      - 14001:1401 # funny-server
+      - 14002:1402 # dyd-funny-game
+      
+      # 有趣生活+永倍达
+      - 14003:1403 # funny-server
+      - 14004:1404 # ybd-shop
+      - 14005:1405 # ybd-shop-admin
+      - 14006:1406 # dyd-funny-game
+
+      - 14099:14099 # xhprof
+    volumes:
+      - ./etc/nginx/conf.d/ext:/etc/nginx/conf.d/ext
+      - ./etc/nginx/conf.d/vhost:/usr/local/openresty/nginx/conf/vhost
+      - ./etc/nginx/conf.d/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
+      - ./log/nginx:/var/log/nginx
+      - /var/www:/var/www
+    privileged: true
+    restart: always
+
+# 预留10个端口给php 14100-14109
+  full_php56:
+    container_name: full_php56
+    image: ferminfu/php56:v0.1
+    ports:
+      - 14100:9000
+    volumes:
+      - ./etc/php56/php-fpm.conf:/usr/local/etc/php-fpm.conf
+      - ./etc/php56/php.ini:/usr/local/etc/php/php.ini
+      - ./etc/php56/conf.d:/usr/local/etc/php/conf.d
+      - /var/www:/var/www
+    privileged: true
+    restart: always
+
+
+  full_php73:
+    container_name: full_php73
+    image: ferminfu/php73:v0.3
+    ports:
+      - 14101:9000
+    volumes:
+      - ./etc/php73/php-fpm.conf:/usr/local/etc/php-fpm.conf
+      - ./log/php73:/var/log/php-fpm
+      - ./etc/php73/conf.d:/usr/local/etc/php/conf.d
+      - /var/www:/var/www
+    privileged: true
+    restart: always
+
+
+  full_php74:
+    container_name: full_php74
+    # build: ./etc/php74/
+    # image: php:7.4-fpm
+    image: ferminfu/php74:v1.0
+    ports:
+      - 14102:9000
+      - 14103:12000 # supervisor GUI
+    volumes:
+      - ./etc/php74/php/php-fpm.conf:/usr/local/etc/php-fpm.conf
+      - ./etc/php74/php/php.ini:/usr/local/etc/php/php.ini
+      - ./etc/php74/php/conf.d:/usr/local/etc/php/conf.d
+      - ./etc/php74/supervisor:/etc/supervisor
+      - ./log/php74:/var/log/php-fpm
+      - ./log/supervisor:/var/log/supervisor
+      - /var/www:/var/www
+    privileged: true
+    restart: always
+
+
+# 预留10个端口给 postgres 14120-14129
+  full_postgres:
+    container_name: full_postgres
+    image: postgres
+    ports:
+      - 14120:5432
+    volumes:
+      - ./data/postgres:/var/lib/postgresql
+    environment:
+      POSTGRES_PASSWORD: 123456
+      ALLOW_IP_RANGE: 0.0.0.0/0 
+    restart: always
+
+    
+# 预留10个端口给 mysql 14130-14139
+  full_mysql57:
+    container_name: full_mysql57
+    image: mysql:5.7
+    ports:
+      - 14130:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - ./data/mysql57:/var/lib/mysql
+      - ./log/mysql57:/var/log/mysql
+      - ./etc/mysql57/my.cnf:/etc/my.cnf
+    restart: always
+
+
+# 预留10个端口给 rabbitmq 14140-14149
+  full_rabbitmq:
+    container_name: full_rabbitmq
+    image: rabbitmq:management
+    restart: always
+    ports:
+      - 14140:15672
+      - 14141:5672
+      - 14142:25672
+      - 14143:61613
+      - 14144:1883 
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+    # volumes:
+    #   - ./etc/rabbitmq:/etc/rabbitmq 
+    #   - ./data/rabbitmq:/var/lib/rabbitmq 
+    #   - ./log/rabbitmq:/var/log/rabbitmq/log
+
+
+# 预留10个端口给 mongo 14150-14159
+  full_mongo:
+    container_name: full_mongo
+    image: mongo
+    ports:
+      - 14150:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    # command: --serviceExecutor adaptive
+    volumes:
+      - ./data/mongo:/etc/mongo
+    # config: 
+    #   - /etc/mongo/mongod.conf
+    restart: always
+
+
+  full_mongo_express:
+    container_name: full_mongo_express
+    image: mongo-express
+    restart: always
+    ports:
+      - 14151:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_URL: mongodb://root:example@full_mongo:27017/
+
+
+# 预留10个端口给redis 14160-14169
+  full_php_redis_admin:
+    container_name: full_php_redis_admin
+    image: erikdubbelboer/phpredisadmin:latest
+    ports:
+      - 14160:80
+    environment:
+      REDIS_1_HOST: full_redis40
+      REDIS_1_NAME: full_redis40
+      REDIS_1_PORT: 6379
+      REDIS_1_AUTH: 123456
+      
+      REDIS_2_HOST: full_redis50
+      REDIS_2_NAME: full_redis50
+      REDIS_2_PORT: 6379
+      REDIS_2_AUTH: 123456
+
+      # REDIS_3_HOST: 123.60.138.234
+      # REDIS_3_NAME: funny_server_user
+      # REDIS_3_PORT: 30149
+      # REDIS_3_AUTH: nkhVQT8Ylscqa2KE
+
+      # REDIS_4_HOST: 123.60.138.234
+      # REDIS_4_NAME: hw-redis-funny
+      # REDIS_4_PORT: 30103
+      # REDIS_4_AUTH: OaA1@QeR0!V2N4uPBj
+    restart: always
+
+
+  # redis-funny
+  full_redis40:
+    container_name: full_redis40
+    image: redis:4.0
+    ports:
+      - 14161:6379
+    volumes:
+      - ./etc/redis40:/etc/redis
+      - ./log/redis40:/var/log/redis
+      - ./data/redis40:/data
+    restart: always
+    command: redis-server /etc/redis/redis.conf --appendonly yes
+
+
+  # redis-game
+  full_redis50:
+    container_name: full_redis50
+    image: redis:5.0
+    ports:
+      - 14162:6379
+    volumes:
+      - ./etc/redis50:/etc/redis
+      - ./log/redis50:/var/log/redis
+      - ./data/redis50:/data
+    restart: always
+    command: redis-server /etc/redis/redis.conf --appendonly yes
+
+
+
+# 预留10个端口给redis 14170-14179
+  # kyk_jenkins:
+  #   container_name: kyk_jenkins
+  #   image: jenkins/jenkins:lts
+  #   restart: always
+  #   ports:
+  #     - 14170:8080
+  #     - 14171:5000
