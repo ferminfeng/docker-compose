@@ -1,0 +1,15 @@
+version: "3"
+services:
+
+# 运行并设置media为媒体目录
+  jellyfin:
+    container_name: jellyfin
+    image: jellyfin/jellyfin:latest
+    ports: 
+      - 8096:8096
+    volumes:
+      - ./config:/config
+      - ./cache:/cache
+      - ./media:/media
+    privileged: true
+    restart: always
