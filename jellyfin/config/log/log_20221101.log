@@ -1,0 +1,467 @@
+[2022-11-01 08:20:32.804 +00:00] [INF] [4] Main: Jellyfin version: "10.7.7"
+[2022-11-01 08:20:32.823 +00:00] [INF] [4] Main: Environment Variables: ["[JELLYFIN_DATA_DIR, /config]", "[JELLYFIN_MEDIA_DIR, /media]", "[JELLYFIN_CACHE_DIR, /cache]", "[JELLYFIN_LOG_DIR, /config/log]", "[JELLYFIN_CONFIG_DIR, /config/config]", "[JELLYFIN_FFMPEG, /usr/lib/jellyfin-ffmpeg/ffmpeg]", "[DOTNET_SYSTEM_GLOBALIZATION_INVARIANT, 1]", "[JELLYFIN_WEB_DIR, /jellyfin/jellyfin-web]"]
+[2022-11-01 08:20:32.829 +00:00] [INF] [4] Main: Arguments: ["/jellyfin/jellyfin.dll"]
+[2022-11-01 08:20:32.834 +00:00] [INF] [4] Main: Operating system: "Linux"
+[2022-11-01 08:20:32.834 +00:00] [INF] [4] Main: Architecture: X64
+[2022-11-01 08:20:32.835 +00:00] [INF] [4] Main: 64-Bit Process: True
+[2022-11-01 08:20:32.836 +00:00] [INF] [4] Main: User Interactive: True
+[2022-11-01 08:20:32.836 +00:00] [INF] [4] Main: Processor count: 6
+[2022-11-01 08:20:32.836 +00:00] [INF] [4] Main: Program data path: "/config"
+[2022-11-01 08:20:32.836 +00:00] [INF] [4] Main: Web resources path: "/jellyfin/jellyfin-web"
+[2022-11-01 08:20:32.837 +00:00] [INF] [4] Main: Application directory: "/jellyfin/"
+[2022-11-01 08:20:32.984 +00:00] [INF] [4] Emby.Server.Implementations.AppBase.BaseConfigurationManager: Setting cache path: "/cache"
+[2022-11-01 08:20:33.057 +00:00] [INF] [4] Jellyfin.Networking.Manager.NetworkManager: Defined LAN addresses : "[127.0.0.1/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16]"
+[2022-11-01 08:20:33.057 +00:00] [INF] [4] Jellyfin.Networking.Manager.NetworkManager: Defined LAN exclusions : "[]"
+[2022-11-01 08:20:33.059 +00:00] [INF] [4] Jellyfin.Networking.Manager.NetworkManager: Using LAN addresses: "[127.0.0.1/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16]"
+[2022-11-01 08:20:33.069 +00:00] [INF] [4] Jellyfin.Networking.Manager.NetworkManager: Using bind addresses: "[]"
+[2022-11-01 08:20:33.070 +00:00] [INF] [4] Jellyfin.Networking.Manager.NetworkManager: Using bind exclusions: "[]"
+[2022-11-01 08:20:33.085 +00:00] [INF] [4] Emby.Server.Implementations.ApplicationHost: Loading assemblies
+[2022-11-01 08:20:35.241 +00:00] [INF] [4] Emby.Server.Implementations.AppBase.BaseConfigurationManager: Saving system configuration
+[2022-11-01 08:20:35.246 +00:00] [INF] [4] Emby.Server.Implementations.AppBase.BaseConfigurationManager: Setting cache path: "/cache"
+[2022-11-01 08:20:35.253 +00:00] [INF] [4] Emby.Server.Implementations.Plugins.PluginManager: Loaded plugin: "OMDb" "10.7.7.0"
+[2022-11-01 08:20:35.255 +00:00] [INF] [4] Emby.Server.Implementations.Plugins.PluginManager: Loaded plugin: "MusicBrainz" "10.7.7.0"
+[2022-11-01 08:20:35.257 +00:00] [INF] [4] Emby.Server.Implementations.Plugins.PluginManager: Loaded plugin: "AudioDB" "10.7.7.0"
+[2022-11-01 08:20:35.321 +00:00] [INF] [4] Jellyfin.Server.Migrations.MigrationRunner: Marking all known migrations as applied because this is a fresh install
+[2022-11-01 08:20:35.347 +00:00] [INF] [4] Jellyfin.Server.Migrations.MigrationRunner: Applying migration '"AddDefaultPluginRepository"'
+[2022-11-01 08:20:35.348 +00:00] [INF] [4] Emby.Server.Implementations.AppBase.BaseConfigurationManager: Saving system configuration
+[2022-11-01 08:20:35.354 +00:00] [INF] [4] Emby.Server.Implementations.AppBase.BaseConfigurationManager: Setting cache path: "/cache"
+[2022-11-01 08:20:35.355 +00:00] [INF] [4] Jellyfin.Server.Migrations.MigrationRunner: Migration '"AddDefaultPluginRepository"' applied successfully
+[2022-11-01 08:20:35.359 +00:00] [INF] [4] Jellyfin.Server.Migrations.MigrationRunner: Applying migration '"ReaddDefaultPluginRepository"'
+[2022-11-01 08:20:35.360 +00:00] [INF] [4] Jellyfin.Server.Migrations.MigrationRunner: Migration '"ReaddDefaultPluginRepository"' applied successfully
+[2022-11-01 08:20:35.365 +00:00] [INF] [4] Jellyfin.Server.Migrations.MigrationRunner: Applying migration '"AddPeopleQueryIndex"'
+[2022-11-01 08:20:35.370 +00:00] [INF] [4] Jellyfin.Server.Migrations.Routines.AddPeopleQueryIndex: Creating index idx_TypedBaseItemsUserDataKeyType
+[2022-11-01 08:20:35.382 +00:00] [INF] [4] Jellyfin.Server.Migrations.Routines.AddPeopleQueryIndex: Creating index idx_PeopleNameListOrder
+[2022-11-01 08:20:35.390 +00:00] [INF] [4] Jellyfin.Server.Migrations.MigrationRunner: Migration '"AddPeopleQueryIndex"' applied successfully
+[2022-11-01 08:20:35.400 +00:00] [INF] [4] Main: Kestrel listening on "Any IP4 Address"
+[2022-11-01 08:20:35.715 +00:00] [WRN] [4] Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager: No XML encryptor configured. Key {08b07867-c342-419e-9f49-87486cf655c6} may be persisted to storage in unencrypted form.
+[2022-11-01 08:20:35.753 +00:00] [INF] [4] Emby.Server.Implementations.ApplicationHost: Running startup tasks
+[2022-11-01 08:20:35.792 +00:00] [INF] [4] Emby.Server.Implementations.ScheduledTasks.TaskManager: Daily trigger for "Extract Chapter Images" set to fire at 11/02/2022 02:00, which is 17:39:24.2074325 from now.
+[2022-11-01 08:20:35.842 +00:00] [INF] [4] MediaBrowser.MediaEncoding.Encoder.MediaEncoder: Found ffmpeg version "4.3.2"
+[2022-11-01 08:20:35.875 +00:00] [INF] [4] MediaBrowser.MediaEncoding.Encoder.MediaEncoder: Available "decoders": ["h264", "h264_qsv", "h264_cuvid", "hevc", "hevc_qsv", "hevc_cuvid", "mpeg2video", "mpeg2_qsv", "mpeg2_cuvid", "mpeg4", "mpeg4_cuvid", "msmpeg4", "vc1_qsv", "vc1_cuvid", "vp8_cuvid", "vp8_qsv", "vp9_cuvid", "vp9_qsv", "aac", "ac3", "flac", "mp3"]
+[2022-11-01 08:20:35.889 +00:00] [INF] [4] MediaBrowser.MediaEncoding.Encoder.MediaEncoder: Available "encoders": ["libx264", "h264_amf", "h264_nvenc", "h264_qsv", "h264_v4l2m2m", "h264_vaapi", "libx265", "hevc_amf", "hevc_nvenc", "hevc_qsv", "hevc_vaapi", "mpeg4", "msmpeg4", "libvpx", "libvpx-vp9", "aac", "ac3", "flac", "libmp3lame", "libopus", "libvorbis", "srt"]
+[2022-11-01 08:20:35.903 +00:00] [INF] [4] MediaBrowser.MediaEncoding.Encoder.MediaEncoder: Available hwaccel types: ["vdpau", "cuda", "vaapi", "qsv", "drm", "opencl"]
+[2022-11-01 08:20:35.903 +00:00] [INF] [4] MediaBrowser.MediaEncoding.Encoder.MediaEncoder: FFmpeg: SetByArgument: "/usr/lib/jellyfin-ffmpeg/ffmpeg"
+[2022-11-01 08:20:35.911 +00:00] [INF] [4] Emby.Server.Implementations.ApplicationHost: ServerId: "ac3ca068f6614567a05f6f464201d9be"
+[2022-11-01 08:20:36.258 +00:00] [INF] [11] Emby.Dlna.Main.DlnaEntryPoint: Registering publisher for "urn:schemas-upnp-org:device:MediaServer:1" on "172.19.0.2/16"
+[2022-11-01 08:20:36.284 +00:00] [INF] [11] Emby.Server.Implementations.ApplicationHost: Executed all pre-startup entry points in 0:00:00.3605211
+[2022-11-01 08:20:36.284 +00:00] [INF] [11] Emby.Server.Implementations.ApplicationHost: Core startup complete
+[2022-11-01 08:20:36.509 +00:00] [INF] [11] Emby.Server.Implementations.ApplicationHost: Executed all post-startup entry points in 0:00:00.2253362
+[2022-11-01 08:20:36.510 +00:00] [INF] [11] Main: Startup complete 0:00:03.9176942
+[2022-11-01 08:20:38.808 +00:00] [INF] [16] Emby.Server.Implementations.ScheduledTasks.TaskManager: "StartupTrigger" fired for task: "Update Plugins"
+[2022-11-01 08:20:38.811 +00:00] [INF] [16] Emby.Server.Implementations.ScheduledTasks.TaskManager: Queuing task "PluginUpdateTask"
+[2022-11-01 08:20:38.817 +00:00] [INF] [11] Emby.Server.Implementations.ScheduledTasks.TaskManager: Executing "Update Plugins"
+[2022-11-01 08:20:58.906 +00:00] [ERR] [16] Emby.Server.Implementations.Updates.InstallationManager: An error occurred while accessing the plugin manifest: "https://repo.jellyfin.org/releases/plugin/manifest-stable.json"
+System.Net.Http.HttpRequestException: Resource temporarily unavailable (repo.jellyfin.org:443)
+ ---> System.Net.Sockets.SocketException (11): Resource temporarily unavailable
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|283_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.DefaultConnectAsync(SocketsHttpConnectionContext context, CancellationToken cancellationToken)
+   at System.Net.Http.ConnectHelper.ConnectAsync(Func`3 callback, DnsEndPoint endPoint, HttpRequestMessage requestMessage, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.ConnectAsync(Func`3 callback, DnsEndPoint endPoint, HttpRequestMessage requestMessage, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.DecompressionHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.SendAsyncCore(HttpRequestMessage request, HttpCompletionOption completionOption, Boolean async, Boolean emitTelemetryStartStop, CancellationToken cancellationToken)
+   at System.Net.Http.Json.HttpClientJsonExtensions.GetFromJsonAsyncCore[T](Task`1 taskResponse, JsonSerializerOptions options, CancellationToken cancellationToken)
+   at Emby.Server.Implementations.Updates.InstallationManager.GetPackages(String manifestName, String manifest, Boolean filterIncompatible, CancellationToken cancellationToken)
+[2022-11-01 08:20:58.927 +00:00] [INF] [16] Emby.Server.Implementations.ScheduledTasks.TaskManager: "Update Plugins" Completed after 0 minute(s) and 20 seconds
+[2022-11-01 08:20:58.980 +00:00] [INF] [16] Emby.Server.Implementations.ScheduledTasks.TaskManager: ExecuteQueuedTasks
+[2022-11-01 08:39:37.404 +00:00] [INF] [73] Emby.Server.Implementations.AppBase.BaseConfigurationManager: Saving system configuration
+[2022-11-01 08:39:37.414 +00:00] [INF] [73] Emby.Server.Implementations.AppBase.BaseConfigurationManager: Setting cache path: "/cache"
+[2022-11-01 08:39:37.419 +00:00] [INF] [61] Emby.Server.Implementations.EntryPoints.ExternalPortForwarding: Stopping NAT discovery
+[2022-11-01 08:39:37.471 +00:00] [WRN] [61] Jellyfin.Server.Implementations.Users.UserManager: No users, creating one with username "root"
+[2022-11-01 08:39:38.079 +00:00] [WRN] [61] Jellyfin.Server.Middleware.ResponseTimeMiddleware: Slow HTTP Response from "http://127.0.0.1:8096/Startup/User" to "172.19.0.1" in 0:00:00.618786 with Status Code 200
+[2022-11-01 08:41:42.633 +00:00] [WRN] [85] Jellyfin.Server.Middleware.ResponseTimeMiddleware: Slow HTTP Response from "http://127.0.0.1:8096/Library/VirtualFolders?collectionType=movies&refreshLibrary=false&name=Movies" to "172.19.0.1" in 0:00:01.1628794 with Status Code 204
+[2022-11-01 08:42:03.045 +00:00] [INF] [86] Emby.Server.Implementations.AppBase.BaseConfigurationManager: Saving system configuration
+[2022-11-01 08:42:03.052 +00:00] [INF] [86] Emby.Server.Implementations.AppBase.BaseConfigurationManager: Setting cache path: "/cache"
+[2022-11-01 08:42:07.857 +00:00] [INF] [89] Jellyfin.Networking.Manager.NetworkManager: Defined LAN addresses : "[127.0.0.1/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16]"
+[2022-11-01 08:42:07.857 +00:00] [INF] [89] Jellyfin.Networking.Manager.NetworkManager: Defined LAN exclusions : "[]"
+[2022-11-01 08:42:07.857 +00:00] [INF] [89] Jellyfin.Networking.Manager.NetworkManager: Using LAN addresses: "[127.0.0.1/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16]"
+[2022-11-01 08:42:07.858 +00:00] [INF] [89] Jellyfin.Networking.Manager.NetworkManager: Using bind addresses: "[]"
+[2022-11-01 08:42:07.858 +00:00] [INF] [89] Jellyfin.Networking.Manager.NetworkManager: Using bind exclusions: "[]"
+[2022-11-01 08:42:09.852 +00:00] [INF] [89] Emby.Server.Implementations.AppBase.BaseConfigurationManager: Saving system configuration
+[2022-11-01 08:42:09.860 +00:00] [INF] [89] Emby.Server.Implementations.AppBase.BaseConfigurationManager: Setting cache path: "/cache"
+[2022-11-01 08:42:09.867 +00:00] [INF] [89] Emby.Server.Implementations.ScheduledTasks.TaskManager: Queuing task "RefreshMediaLibraryTask"
+[2022-11-01 08:42:09.869 +00:00] [INF] [89] Emby.Server.Implementations.EntryPoints.ExternalPortForwarding: Stopping NAT discovery
+[2022-11-01 08:42:09.869 +00:00] [INF] [89] Emby.Server.Implementations.EntryPoints.ExternalPortForwarding: Starting NAT discovery
+[2022-11-01 08:42:09.869 +00:00] [INF] [92] Emby.Server.Implementations.ScheduledTasks.TaskManager: Executing "扫描媒体库"
+[2022-11-01 08:42:09.877 +00:00] [INF] [92] Emby.Server.Implementations.Library.LibraryManager: Validating media library
+[2022-11-01 08:42:11.203 +00:00] [INF] [92] Emby.Server.Implementations.ScheduledTasks.TaskManager: "扫描媒体库" Completed after 0 minute(s) and 1 seconds
+[2022-11-01 08:42:11.211 +00:00] [INF] [92] Emby.Server.Implementations.ScheduledTasks.TaskManager: ExecuteQueuedTasks
+[2022-11-01 08:42:11.228 +00:00] [INF] [88] Emby.Server.Implementations.IO.LibraryMonitor: Watching directory /media
+[2022-11-01 08:42:19.999 +00:00] [INF] [83] Jellyfin.Server.Implementations.Users.UserManager: Authentication request for "fermin" has succeeded.
+[2022-11-01 08:42:20.001 +00:00] [INF] [83] Emby.Server.Implementations.Session.SessionManager: Current/Max sessions for user "fermin": 0/0
+[2022-11-01 08:42:20.017 +00:00] [INF] [83] Emby.Server.Implementations.Session.SessionManager: Creating new access token for user d99ba1bd-4494-40ca-8f98-0964ee8f4ab8
+[2022-11-01 08:42:20.198 +00:00] [INF] [92] Emby.Server.Implementations.HttpServer.WebSocketManager: WS "172.19.0.1" request
+[2022-11-01 08:42:29.097 +00:00] [INF] [91] Emby.Server.Implementations.HttpServer.WebSocketManager: WS "172.19.0.1" closed
+[2022-11-01 08:42:29.446 +00:00] [INF] [80] Emby.Server.Implementations.HttpServer.WebSocketManager: WS "172.19.0.1" request
+[2022-11-01 08:44:46.549 +00:00] [INF] [85] Emby.Server.Implementations.HttpServer.WebSocketManager: WS "172.19.0.1" closed
+[2022-11-01 08:44:47.112 +00:00] [INF] [85] Emby.Server.Implementations.HttpServer.WebSocketManager: WS "172.19.0.1" request
+[2022-11-01 08:44:48.940 +00:00] [INF] [73] Emby.Server.Implementations.HttpServer.WebSocketManager: WS "172.19.0.1" closed
+[2022-11-01 08:44:49.344 +00:00] [INF] [80] Emby.Server.Implementations.HttpServer.WebSocketManager: WS "172.19.0.1" request
+[2022-11-01 08:45:42.719 +00:00] [INF] [72] Emby.Server.Implementations.IO.LibraryMonitor: "media" ("/media") will be refreshed.
+[2022-11-01 08:46:00.027 +00:00] [INF] [85] Emby.Server.Implementations.HttpServer.WebSocketManager: WS "172.19.0.1" closed
+[2022-11-01 08:46:00.446 +00:00] [INF] [82] Emby.Server.Implementations.HttpServer.WebSocketManager: WS "172.19.0.1" request
+[2022-11-01 08:46:07.929 +00:00] [INF] [85] Emby.Server.Implementations.HttpServer.WebSocketManager: WS "172.19.0.1" closed
+[2022-11-01 08:46:08.319 +00:00] [INF] [88] Emby.Server.Implementations.HttpServer.WebSocketManager: WS "172.19.0.1" request
+[2022-11-01 08:46:58.266 +00:00] [ERR] [70] MediaBrowser.Providers.Movies.MovieMetadataService: Error in "TheMovieDb"
+System.Net.Http.HttpRequestException: Cannot assign requested address (api.themoviedb.org:443)
+ ---> System.Net.Sockets.SocketException (99): Cannot assign requested address
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|283_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.DefaultConnectAsync(SocketsHttpConnectionContext context, CancellationToken cancellationToken)
+   at System.Net.Http.ConnectHelper.ConnectAsync(Func`3 callback, DnsEndPoint endPoint, HttpRequestMessage requestMessage, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.ConnectAsync(Func`3 callback, DnsEndPoint endPoint, HttpRequestMessage requestMessage, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.SendAsyncCore(HttpRequestMessage request, HttpCompletionOption completionOption, Boolean async, Boolean emitTelemetryStartStop, CancellationToken cancellationToken)
+   at TMDbLib.Rest.RestRequest.SendInternal(HttpMethod method, CancellationToken cancellationToken)
+   at TMDbLib.Rest.RestRequest.ExecuteGet[T](CancellationToken cancellationToken)
+   at TMDbLib.Client.TMDbClient.GetConfigAsync()
+   at MediaBrowser.Providers.Plugins.Tmdb.TmdbClientManager.SearchMovieAsync(String name, Int32 year, String language, CancellationToken cancellationToken)
+   at MediaBrowser.Providers.Plugins.Tmdb.Movies.TmdbMovieProvider.GetMetadata(MovieInfo info, CancellationToken cancellationToken)
+   at MediaBrowser.Providers.Manager.MetadataService`2.ExecuteRemoteProviders(MetadataResult`1 temp, String logName, TIdType id, IEnumerable`1 providers, CancellationToken cancellationToken)
+[2022-11-01 08:46:58.266 +00:00] [ERR] [74] MediaBrowser.Providers.Movies.MovieMetadataService: Error in "TheMovieDb"
+System.Net.Http.HttpRequestException: Cannot assign requested address (api.themoviedb.org:443)
+ ---> System.Net.Sockets.SocketException (99): Cannot assign requested address
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|283_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.DefaultConnectAsync(SocketsHttpConnectionContext context, CancellationToken cancellationToken)
+   at System.Net.Http.ConnectHelper.ConnectAsync(Func`3 callback, DnsEndPoint endPoint, HttpRequestMessage requestMessage, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.ConnectAsync(Func`3 callback, DnsEndPoint endPoint, HttpRequestMessage requestMessage, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.SendAsyncCore(HttpRequestMessage request, HttpCompletionOption completionOption, Boolean async, Boolean emitTelemetryStartStop, CancellationToken cancellationToken)
+   at TMDbLib.Rest.RestRequest.SendInternal(HttpMethod method, CancellationToken cancellationToken)
+   at TMDbLib.Rest.RestRequest.ExecuteGet[T](CancellationToken cancellationToken)
+   at TMDbLib.Client.TMDbClient.GetConfigAsync()
+   at MediaBrowser.Providers.Plugins.Tmdb.TmdbClientManager.SearchMovieAsync(String name, Int32 year, String language, CancellationToken cancellationToken)
+   at MediaBrowser.Providers.Plugins.Tmdb.Movies.TmdbMovieProvider.GetMetadata(MovieInfo info, CancellationToken cancellationToken)
+   at MediaBrowser.Providers.Manager.MetadataService`2.ExecuteRemoteProviders(MetadataResult`1 temp, String logName, TIdType id, IEnumerable`1 providers, CancellationToken cancellationToken)
+[2022-11-01 08:46:58.266 +00:00] [ERR] [85] MediaBrowser.Providers.Movies.MovieMetadataService: Error in "TheMovieDb"
+System.Net.Http.HttpRequestException: Cannot assign requested address (api.themoviedb.org:443)
+ ---> System.Net.Sockets.SocketException (99): Cannot assign requested address
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|283_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.DefaultConnectAsync(SocketsHttpConnectionContext context, CancellationToken cancellationToken)
+   at System.Net.Http.ConnectHelper.ConnectAsync(Func`3 callback, DnsEndPoint endPoint, HttpRequestMessage requestMessage, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.ConnectAsync(Func`3 callback, DnsEndPoint endPoint, HttpRequestMessage requestMessage, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.SendAsyncCore(HttpRequestMessage request, HttpCompletionOption completionOption, Boolean async, Boolean emitTelemetryStartStop, CancellationToken cancellationToken)
+   at TMDbLib.Rest.RestRequest.SendInternal(HttpMethod method, CancellationToken cancellationToken)
+   at TMDbLib.Rest.RestRequest.ExecuteGet[T](CancellationToken cancellationToken)
+   at TMDbLib.Client.TMDbClient.GetConfigAsync()
+   at MediaBrowser.Providers.Plugins.Tmdb.TmdbClientManager.SearchMovieAsync(String name, Int32 year, String language, CancellationToken cancellationToken)
+   at MediaBrowser.Providers.Plugins.Tmdb.Movies.TmdbMovieProvider.GetMetadata(MovieInfo info, CancellationToken cancellationToken)
+   at MediaBrowser.Providers.Manager.MetadataService`2.ExecuteRemoteProviders(MetadataResult`1 temp, String logName, TIdType id, IEnumerable`1 providers, CancellationToken cancellationToken)
+[2022-11-01 08:46:58.266 +00:00] [ERR] [72] MediaBrowser.Providers.Movies.MovieMetadataService: Error in "TheMovieDb"
+System.Net.Http.HttpRequestException: Cannot assign requested address (api.themoviedb.org:443)
+ ---> System.Net.Sockets.SocketException (99): Cannot assign requested address
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|283_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.DefaultConnectAsync(SocketsHttpConnectionContext context, CancellationToken cancellationToken)
+   at System.Net.Http.ConnectHelper.ConnectAsync(Func`3 callback, DnsEndPoint endPoint, HttpRequestMessage requestMessage, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.ConnectAsync(Func`3 callback, DnsEndPoint endPoint, HttpRequestMessage requestMessage, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.SendAsyncCore(HttpRequestMessage request, HttpCompletionOption completionOption, Boolean async, Boolean emitTelemetryStartStop, CancellationToken cancellationToken)
+   at TMDbLib.Rest.RestRequest.SendInternal(HttpMethod method, CancellationToken cancellationToken)
+   at TMDbLib.Rest.RestRequest.ExecuteGet[T](CancellationToken cancellationToken)
+   at TMDbLib.Client.TMDbClient.GetConfigAsync()
+   at MediaBrowser.Providers.Plugins.Tmdb.TmdbClientManager.SearchMovieAsync(String name, Int32 year, String language, CancellationToken cancellationToken)
+   at MediaBrowser.Providers.Plugins.Tmdb.Movies.TmdbMovieProvider.GetMetadata(MovieInfo info, CancellationToken cancellationToken)
+   at MediaBrowser.Providers.Manager.MetadataService`2.ExecuteRemoteProviders(MetadataResult`1 temp, String logName, TIdType id, IEnumerable`1 providers, CancellationToken cancellationToken)
+[2022-11-01 08:47:26.914 +00:00] [INF] [85] Jellyfin.Server.Implementations.Users.UserManager: Authentication request for "fermin" has succeeded.
+[2022-11-01 08:47:26.914 +00:00] [INF] [85] Emby.Server.Implementations.Session.SessionManager: Current/Max sessions for user "fermin": 1/0
+[2022-11-01 08:47:26.917 +00:00] [INF] [85] Emby.Server.Implementations.Session.SessionManager: Creating new access token for user d99ba1bd-4494-40ca-8f98-0964ee8f4ab8
+[2022-11-01 08:47:26.991 +00:00] [INF] [80] Emby.Server.Implementations.HttpServer.WebSocketManager: WS "172.19.0.1" request
+[2022-11-01 08:48:14.694 +00:00] [ERR] [88] MediaBrowser.Providers.Manager.ProviderManager: "TmdbMovieImageProvider" failed in GetImageInfos for type "Movie" at "/media/0207.磁盘工作原理.wmv"
+System.Net.Http.HttpRequestException: Cannot assign requested address (api.themoviedb.org:443)
+ ---> System.Net.Sockets.SocketException (99): Cannot assign requested address
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|283_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.DefaultConnectAsync(SocketsHttpConnectionContext context, CancellationToken cancellationToken)
+   at System.Net.Http.ConnectHelper.ConnectAsync(Func`3 callback, DnsEndPoint endPoint, HttpRequestMessage requestMessage, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.ConnectAsync(Func`3 callback, DnsEndPoint endPoint, HttpRequestMessage requestMessage, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.SendAsyncCore(HttpRequestMessage request, HttpCompletionOption completionOption, Boolean async, Boolean emitTelemetryStartStop, CancellationToken cancellationToken)
+   at TMDbLib.Rest.RestRequest.SendInternal(HttpMethod method, CancellationToken cancellationToken)
+   at TMDbLib.Rest.RestRequest.ExecuteGet[T](CancellationToken cancellationToken)
+   at TMDbLib.Client.TMDbClient.GetConfigAsync()
+   at MediaBrowser.Providers.Plugins.Tmdb.TmdbClientManager.FindByExternalIdAsync(String externalId, FindExternalSource source, String language, CancellationToken cancellationToken)
+   at MediaBrowser.Providers.Plugins.Tmdb.Movies.TmdbMovieImageProvider.GetImages(BaseItem item, CancellationToken cancellationToken)
+   at MediaBrowser.Providers.Manager.ProviderManager.GetImages(BaseItem item, IRemoteImageProvider provider, IReadOnlyCollection`1 preferredLanguages, CancellationToken cancellationToken, Nullable`1 type)
+[2022-11-01 08:48:14.694 +00:00] [ERR] [80] MediaBrowser.Providers.Manager.ProviderManager: "TmdbMovieImageProvider" failed in GetImageInfos for type "Movie" at "/media/0302.计算机性能评价方法.wmv"
+System.Net.Http.HttpRequestException: Cannot assign requested address (api.themoviedb.org:443)
+ ---> System.Net.Sockets.SocketException (99): Cannot assign requested address
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|283_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.DefaultConnectAsync(SocketsHttpConnectionContext context, CancellationToken cancellationToken)
+   at System.Net.Http.ConnectHelper.ConnectAsync(Func`3 callback, DnsEndPoint endPoint, HttpRequestMessage requestMessage, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.ConnectAsync(Func`3 callback, DnsEndPoint endPoint, HttpRequestMessage requestMessage, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.SendAsyncCore(HttpRequestMessage request, HttpCompletionOption completionOption, Boolean async, Boolean emitTelemetryStartStop, CancellationToken cancellationToken)
+   at TMDbLib.Rest.RestRequest.SendInternal(HttpMethod method, CancellationToken cancellationToken)
+   at TMDbLib.Rest.RestRequest.ExecuteGet[T](CancellationToken cancellationToken)
+   at TMDbLib.Client.TMDbClient.GetConfigAsync()
+   at MediaBrowser.Providers.Plugins.Tmdb.TmdbClientManager.FindByExternalIdAsync(String externalId, FindExternalSource source, String language, CancellationToken cancellationToken)
+   at MediaBrowser.Providers.Plugins.Tmdb.Movies.TmdbMovieImageProvider.GetImages(BaseItem item, CancellationToken cancellationToken)
+   at MediaBrowser.Providers.Manager.ProviderManager.GetImages(BaseItem item, IRemoteImageProvider provider, IReadOnlyCollection`1 preferredLanguages, CancellationToken cancellationToken, Nullable`1 type)
+[2022-11-01 08:48:14.785 +00:00] [ERR] [88] MediaBrowser.Providers.Manager.ProviderManager: "TmdbMovieImageProvider" failed in GetImageInfos for type "Movie" at "/media/0206.随机存储器和只读存储器.wmv"
+System.Net.Http.HttpRequestException: Cannot assign requested address (api.themoviedb.org:443)
+ ---> System.Net.Sockets.SocketException (99): Cannot assign requested address
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|283_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.DefaultConnectAsync(SocketsHttpConnectionContext context, CancellationToken cancellationToken)
+   at System.Net.Http.ConnectHelper.ConnectAsync(Func`3 callback, DnsEndPoint endPoint, HttpRequestMessage requestMessage, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.ConnectAsync(Func`3 callback, DnsEndPoint endPoint, HttpRequestMessage requestMessage, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.SendAsyncCore(HttpRequestMessage request, HttpCompletionOption completionOption, Boolean async, Boolean emitTelemetryStartStop, CancellationToken cancellationToken)
+   at TMDbLib.Rest.RestRequest.SendInternal(HttpMethod method, CancellationToken cancellationToken)
+   at TMDbLib.Rest.RestRequest.ExecuteGet[T](CancellationToken cancellationToken)
+   at TMDbLib.Client.TMDbClient.GetConfigAsync()
+   at MediaBrowser.Providers.Plugins.Tmdb.TmdbClientManager.FindByExternalIdAsync(String externalId, FindExternalSource source, String language, CancellationToken cancellationToken)
+   at MediaBrowser.Providers.Plugins.Tmdb.Movies.TmdbMovieImageProvider.GetImages(BaseItem item, CancellationToken cancellationToken)
+   at MediaBrowser.Providers.Manager.ProviderManager.GetImages(BaseItem item, IRemoteImageProvider provider, IReadOnlyCollection`1 preferredLanguages, CancellationToken cancellationToken, Nullable`1 type)
+[2022-11-01 08:48:14.923 +00:00] [ERR] [82] MediaBrowser.Providers.Manager.ProviderManager: "TmdbMovieImageProvider" failed in GetImageInfos for type "Movie" at "/media/0301.计算机性能指标和阿姆达尔解决方案.wmv"
+System.Net.Http.HttpRequestException: Cannot assign requested address (api.themoviedb.org:443)
+ ---> System.Net.Sockets.SocketException (99): Cannot assign requested address
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|283_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.DefaultConnectAsync(SocketsHttpConnectionContext context, CancellationToken cancellationToken)
+   at System.Net.Http.ConnectHelper.ConnectAsync(Func`3 callback, DnsEndPoint endPoint, HttpRequestMessage requestMessage, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.ConnectAsync(Func`3 callback, DnsEndPoint endPoint, HttpRequestMessage requestMessage, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.SendAsyncCore(HttpRequestMessage request, HttpCompletionOption completionOption, Boolean async, Boolean emitTelemetryStartStop, CancellationToken cancellationToken)
+   at TMDbLib.Rest.RestRequest.SendInternal(HttpMethod method, CancellationToken cancellationToken)
+   at TMDbLib.Rest.RestRequest.ExecuteGet[T](CancellationToken cancellationToken)
+   at TMDbLib.Client.TMDbClient.GetConfigAsync()
+   at MediaBrowser.Providers.Plugins.Tmdb.TmdbClientManager.FindByExternalIdAsync(String externalId, FindExternalSource source, String language, CancellationToken cancellationToken)
+   at MediaBrowser.Providers.Plugins.Tmdb.Movies.TmdbMovieImageProvider.GetImages(BaseItem item, CancellationToken cancellationToken)
+   at MediaBrowser.Providers.Manager.ProviderManager.GetImages(BaseItem item, IRemoteImageProvider provider, IReadOnlyCollection`1 preferredLanguages, CancellationToken cancellationToken, Nullable`1 type)
+[2022-11-01 08:48:38.353 +00:00] [INF] [82] Jellyfin.Api.Controllers.MediaInfoController: GetPostedPlaybackInfo profile: DeviceProfile { Name: null, Id: null, Identification: null, FriendlyName: null, Manufacturer: null, ManufacturerUrl: null, ModelName: null, ModelDescription: null, ModelNumber: null, ModelUrl: null, SerialNumber: null, EnableAlbumArtInDidl: False, EnableSingleAlbumArtLimit: False, EnableSingleSubtitleLimit: False, SupportedMediaTypes: "Audio,Photo,Video", UserId: null, AlbumArtPn: null, MaxAlbumArtWidth: 0, MaxAlbumArtHeight: 0, MaxIconWidth: null, MaxIconHeight: null, MaxStreamingBitrate: 120000000, MaxStaticBitrate: 100000000, MusicStreamingTranscodingBitrate: 384000, MaxStaticMusicBitrate: null, SonyAggregationFlags: null, ProtocolInfo: null, TimelineOffsetSeconds: 0, RequiresPlainVideoItems: False, RequiresPlainFolders: False, EnableMSMediaReceiverRegistrar: False, IgnoreTranscodeByteRangeRequests: False, XmlRootAttributes: [], DirectPlayProfiles: [DirectPlayProfile { Container: "mp4,m4v", AudioCodec: "aac,mp3,ac3,eac3,flac,alac", VideoCodec: "h264", Type: Video }, DirectPlayProfile { Container: "mov", AudioCodec: "aac,mp3,ac3,eac3,flac,alac", VideoCodec: "h264", Type: Video }, DirectPlayProfile { Container: "mp3", AudioCodec: null, VideoCodec: null, Type: Audio }, DirectPlayProfile { Container: "aac", AudioCodec: null, VideoCodec: null, Type: Audio }, DirectPlayProfile { Container: "m4a", AudioCodec: "aac", VideoCodec: null, Type: Audio }, DirectPlayProfile { Container: "m4b", AudioCodec: "aac", VideoCodec: null, Type: Audio }, DirectPlayProfile { Container: "flac", AudioCodec: null, VideoCodec: null, Type: Audio }, DirectPlayProfile { Container: "alac", AudioCodec: null, VideoCodec: null, Type: Audio }, DirectPlayProfile { Container: "m4a", AudioCodec: "alac", VideoCodec: null, Type: Audio }, DirectPlayProfile { Container: "m4b", AudioCodec: "alac", VideoCodec: null, Type: Audio }, DirectPlayProfile { Container: "wav", AudioCodec: null, VideoCodec: null, Type: Audio }], TranscodingProfiles: [TranscodingProfile { Container: "aac", Type: Audio, VideoCodec: null, AudioCodec: "aac", Protocol: "hls", EstimateContentLength: False, EnableMpegtsM2TsMode: False, TranscodeSeekInfo: Auto, CopyTimestamps: False, Context: Streaming, EnableSubtitlesInManifest: False, MaxAudioChannels: "6", MinSegments: 2, SegmentLength: 0, BreakOnNonKeyFrames: True }, TranscodingProfile { Container: "aac", Type: Audio, VideoCodec: null, AudioCodec: "aac", Protocol: "http", EstimateContentLength: False, EnableMpegtsM2TsMode: False, TranscodeSeekInfo: Auto, CopyTimestamps: False, Context: Streaming, EnableSubtitlesInManifest: False, MaxAudioChannels: "6", MinSegments: 0, SegmentLength: 0, BreakOnNonKeyFrames: False }, TranscodingProfile { Container: "mp3", Type: Audio, VideoCodec: null, AudioCodec: "mp3", Protocol: "http", EstimateContentLength: False, EnableMpegtsM2TsMode: False, TranscodeSeekInfo: Auto, CopyTimestamps: False, Context: Streaming, EnableSubtitlesInManifest: False, MaxAudioChannels: "6", MinSegments: 0, SegmentLength: 0, BreakOnNonKeyFrames: False }, TranscodingProfile { Container: "wav", Type: Audio, VideoCodec: null, AudioCodec: "wav", Protocol: "http", EstimateContentLength: False, EnableMpegtsM2TsMode: False, TranscodeSeekInfo: Auto, CopyTimestamps: False, Context: Streaming, EnableSubtitlesInManifest: False, MaxAudioChannels: "6", MinSegments: 0, SegmentLength: 0, BreakOnNonKeyFrames: False }, TranscodingProfile { Container: "mp3", Type: Audio, VideoCodec: null, AudioCodec: "mp3", Protocol: "http", EstimateContentLength: False, EnableMpegtsM2TsMode: False, TranscodeSeekInfo: Auto, CopyTimestamps: False, Context: Static, EnableSubtitlesInManifest: False, MaxAudioChannels: "6", MinSegments: 0, SegmentLength: 0, BreakOnNonKeyFrames: False }, TranscodingProfile { Container: "aac", Type: Audio, VideoCodec: null, AudioCodec: "aac", Protocol: "http", EstimateContentLength: False, EnableMpegtsM2TsMode: False, TranscodeSeekInfo: Auto, CopyTimestamps: False, Context: Static, EnableSubtitlesInManifest: False, MaxAudioChannels: "6", MinSegments: 0, SegmentLength: 0, BreakOnNonKeyFrames: False }, TranscodingProfile { Container: "wav", Type: Audio, VideoCodec: null, AudioCodec: "wav", Protocol: "http", EstimateContentLength: False, EnableMpegtsM2TsMode: False, TranscodeSeekInfo: Auto, CopyTimestamps: False, Context: Static, EnableSubtitlesInManifest: False, MaxAudioChannels: "6", MinSegments: 0, SegmentLength: 0, BreakOnNonKeyFrames: False }, TranscodingProfile { Container: "ts", Type: Video, VideoCodec: "h264", AudioCodec: "aac,mp3,ac3,eac3", Protocol: "hls", EstimateContentLength: False, EnableMpegtsM2TsMode: False, TranscodeSeekInfo: Auto, CopyTimestamps: False, Context: Streaming, EnableSubtitlesInManifest: False, MaxAudioChannels: "6", MinSegments: 2, SegmentLength: 0, BreakOnNonKeyFrames: True }, TranscodingProfile { Container: "mp4", Type: Video, VideoCodec: "h264", AudioCodec: "aac,mp3,ac3,eac3,flac,alac", Protocol: "http", EstimateContentLength: False, EnableMpegtsM2TsMode: False, TranscodeSeekInfo: Auto, CopyTimestamps: False, Context: Static, EnableSubtitlesInManifest: False, MaxAudioChannels: null, MinSegments: 0, SegmentLength: 0, BreakOnNonKeyFrames: False }], ContainerProfiles: [], CodecProfiles: [CodecProfile { Type: Video, Conditions: [ProfileCondition { Condition: NotEquals, Property: IsAnamorphic, Value: "true", IsRequired: False }, ProfileCondition { Condition: EqualsAny, Property: VideoProfile, Value: "high|main|baseline|constrained baseline", IsRequired: False }, ProfileCondition { Condition: LessThanEqual, Property: VideoLevel, Value: "51", IsRequired: False }, ProfileCondition { Condition: NotEquals, Property: IsInterlaced, Value: "true", IsRequired: False }], ApplyConditions: [], Codec: "h264", Container: null }, CodecProfile { Type: Video, Conditions: [ProfileCondition { Condition: NotEquals, Property: IsAnamorphic, Value: "true", IsRequired: False }, ProfileCondition { Condition: EqualsAny, Property: VideoProfile, Value: "main|main 10", IsRequired: False }, ProfileCondition { Condition: LessThanEqual, Property: VideoLevel, Value: "183", IsRequired: False }, ProfileCondition { Condition: NotEquals, Property: IsInterlaced, Value: "true", IsRequired: False }], ApplyConditions: [], Codec: "hevc", Container: null }], ResponseProfiles: [ResponseProfile { Container: "m4v", AudioCodec: null, VideoCodec: null, Type: Video, OrgPn: null, MimeType: "video/mp4", Conditions: [] }], SubtitleProfiles: [SubtitleProfile { Format: "vtt", Method: External, DidlMode: null, Language: null, Container: null }, SubtitleProfile { Format: "ass", Method: External, DidlMode: null, Language: null, Container: null }, SubtitleProfile { Format: "ssa", Method: External, DidlMode: null, Language: null, Container: null }] }
+[2022-11-01 08:48:38.412 +00:00] [INF] [82] Jellyfin.Api.Helpers.MediaInfoHelper: User policy for "fermin". EnablePlaybackRemuxing: True EnableVideoPlaybackTranscoding: True EnableAudioPlaybackTranscoding: True
+[2022-11-01 08:48:38.426 +00:00] [INF] [82] Jellyfin.Api.Helpers.MediaInfoHelper: Profile: "Unknown Profile", Path: "/media/0206.随机存储器和只读存储器.wmv", isEligibleForDirectPlay: True, isEligibleForDirectStream: True
+[2022-11-01 08:48:38.435 +00:00] [INF] [82] Jellyfin.Api.Helpers.MediaInfoHelper: Profile: "Unknown Profile", No video direct play profiles found for "/media/0206.随机存储器和只读存储器.wmv" with codec "wmv3"
+[2022-11-01 08:48:38.455 +00:00] [INF] [82] Jellyfin.Api.Helpers.MediaInfoHelper: Profile: "Unknown Profile", Path: "/media/0206.随机存储器和只读存储器.wmv", isEligibleForDirectPlay: True, isEligibleForDirectStream: True
+[2022-11-01 08:48:38.456 +00:00] [INF] [82] Jellyfin.Api.Helpers.MediaInfoHelper: Profile: "Unknown Profile", No video direct play profiles found for "/media/0206.随机存储器和只读存储器.wmv" with codec "wmv3"
+[2022-11-01 08:48:38.457 +00:00] [INF] [82] Jellyfin.Api.Helpers.MediaInfoHelper: Profile: "Unknown Profile", Path: "/media/0206.随机存储器和只读存储器.wmv", isEligibleForDirectPlay: True, isEligibleForDirectStream: True
+[2022-11-01 08:48:38.457 +00:00] [INF] [82] Jellyfin.Api.Helpers.MediaInfoHelper: Profile: "Unknown Profile", No video direct play profiles found for "/media/0206.随机存储器和只读存储器.wmv" with codec "wmv3"
+[2022-11-01 08:48:40.879 +00:00] [INF] [82] Jellyfin.Api.Controllers.DynamicHlsController: Current HLS implementation doesn't support non-keyframe breaks but one is requested, ignoring that request
+[2022-11-01 08:48:40.902 +00:00] [INF] [82] Jellyfin.Api.Helpers.TranscodingJobHelper: /usr/lib/jellyfin-ffmpeg/ffmpeg -async 1 -f asf -i file:"/media/0206.随机存储器和只读存储器.wmv" -map_metadata -1 -map_chapters -1 -threads 0 -map 0:0 -map 0:1 -map -0:s -codec:v:0 libx264 -pix_fmt yuv420p -preset veryfast -crf 23 -maxrate 2048376 -bufsize 4096752 -profile:v:0 high -level 41 -x264opts:0 subme=0:me_range=4:rc_lookahead=10:me=dia:no_chroma_me:8x8dct=0:partitions=none  -force_key_frames:0 "expr:gte(t,0+n_forced*3)" -vf "scale=trunc(min(max(iw\,ih*dar)\,min(1920\,1080*dar))/2)*2:trunc(min(max(iw/dar\,ih)\,min(1920/dar\,1080))/2)*2" -start_at_zero -vsync -1 -codec:a:0 aac -ac 2 -ab 384000 -copyts -avoid_negative_ts disabled -max_muxing_queue_size 2048 -f hls -max_delay 5000000 -hls_time 3 -hls_segment_type mpegts -start_number 0 -hls_segment_filename "/config/transcodes/17f85dc355e273a31f9b56c596d2b371%d.ts" -hls_playlist_type vod -hls_list_size 0 -y "/config/transcodes/17f85dc355e273a31f9b56c596d2b371.m3u8"
+[2022-11-01 08:48:42.273 +00:00] [WRN] [70] Jellyfin.Server.Middleware.ResponseTimeMiddleware: Slow HTTP Response from "http://192.168.40.252:8096/videos/27ca5621-2200-aa23-ec60-9b361e5cd71b/hls1/main/0.ts?DeviceId=TW96aWxsYS81LjAgKGlQaG9uZTsgQ1BVIGlQaG9uZSBPUyAxNl8xIGxpa2UgTWFjIE9TIFgpIEFwcGxlV2ViS2l0LzYwNS4xLjE1IChLSFRNTCwgbGlrZSBHZWNrbykgTW9iaWxlLzE1RTE0OCBNaWNyb01lc3Nlbmdlci84LjAuMjkoMHgxODAwMWQzNCkgTmV0VHlwZS9XSUZJIExhbmd1YWdlL3poX0NOfDE2NjcyOTI0MzY5MDQ1&MediaSourceId=27ca56212200aa23ec609b361e5cd71b&VideoCodec=h264&AudioCodec=aac,mp3,ac3,eac3&AudioStreamIndex=1&VideoBitrate=139616000&AudioBitrate=384000&PlaySessionId=1b4e5abd4c7c4041b26eab33cb6fb134&api_key=58fe4c8bb4184689a94b5927a51765a5&TranscodingMaxAudioChannels=6&RequireAvc=false&Tag=7b8ed3248728c4c71b0de8690e9d38b3&SegmentContainer=ts&MinSegments=2&BreakOnNonKeyFrames=True&h264-profile=high,main,baseline,constrainedbaseline&h264-level=51&h264-deinterlace=true&TranscodeReasons=ContainerNotSupported,VideoCodecNotSupported,AudioCodecNotSupported" to "172.19.0.1" in 0:00:01.4268259 with Status Code 200
+[2022-11-01 08:49:02.392 +00:00] [INF] [63] Jellyfin.Api.Helpers.TranscodingJobHelper: Stopping ffmpeg process with q command for "/config/transcodes/17f85dc355e273a31f9b56c596d2b371.m3u8"
+[2022-11-01 08:49:02.548 +00:00] [INF] [63] Jellyfin.Api.Helpers.TranscodingJobHelper: FFmpeg exited with code 0
+[2022-11-01 08:49:02.551 +00:00] [INF] [63] Jellyfin.Api.Helpers.TranscodingJobHelper: Deleting partial stream file(s) "/config/transcodes/17f85dc355e273a31f9b56c596d2b371.m3u8"
+[2022-11-01 08:49:04.118 +00:00] [INF] [66] Emby.Server.Implementations.Session.SessionManager: Playback stopped reported by app "Jellyfin Web" "10.7.6" playing "UFC 206: Holloway vs. Pettis". Stopped at "42987" ms
+[2022-11-01 08:49:04.190 +00:00] [WRN] [66] Jellyfin.Server.Middleware.ResponseTimeMiddleware: Slow HTTP Response from "http://192.168.40.252:8096/Sessions/Playing/Stopped" to "172.19.0.1" in 0:00:01.8162564 with Status Code 204
+[2022-11-01 08:49:06.694 +00:00] [INF] [72] Emby.Server.Implementations.HttpServer.WebSocketManager: WS "172.19.0.1" closed
+[2022-11-01 08:49:06.877 +00:00] [INF] [88] Emby.Server.Implementations.HttpServer.WebSocketManager: WS "172.19.0.1" request
+[2022-11-01 08:50:02.507 +00:00] [INF] [82] Jellyfin.Api.Helpers.TranscodingJobHelper: Transcoding kill timer stopped for JobId "a0217d15b71f4a8eb66752c4213ab2ee" PlaySessionId "1b4e5abd4c7c4041b26eab33cb6fb134". Killing transcoding
+[2022-11-01 08:50:02.508 +00:00] [INF] [82] Jellyfin.Api.Helpers.TranscodingJobHelper: Deleting partial stream file(s) "/config/transcodes/17f85dc355e273a31f9b56c596d2b371.m3u8"
+[2022-11-01 08:50:21.446 +00:00] [INF] [82] Jellyfin.Api.Controllers.MediaInfoController: GetPostedPlaybackInfo profile: DeviceProfile { Name: null, Id: null, Identification: null, FriendlyName: null, Manufacturer: null, ManufacturerUrl: null, ModelName: null, ModelDescription: null, ModelNumber: null, ModelUrl: null, SerialNumber: null, EnableAlbumArtInDidl: False, EnableSingleAlbumArtLimit: False, EnableSingleSubtitleLimit: False, SupportedMediaTypes: "Audio,Photo,Video", UserId: null, AlbumArtPn: null, MaxAlbumArtWidth: 0, MaxAlbumArtHeight: 0, MaxIconWidth: null, MaxIconHeight: null, MaxStreamingBitrate: 120000000, MaxStaticBitrate: 100000000, MusicStreamingTranscodingBitrate: 384000, MaxStaticMusicBitrate: null, SonyAggregationFlags: null, ProtocolInfo: null, TimelineOffsetSeconds: 0, RequiresPlainVideoItems: False, RequiresPlainFolders: False, EnableMSMediaReceiverRegistrar: False, IgnoreTranscodeByteRangeRequests: False, XmlRootAttributes: [], DirectPlayProfiles: [DirectPlayProfile { Container: "mp4,m4v", AudioCodec: "aac,mp3,ac3,eac3,flac,alac", VideoCodec: "h264", Type: Video }, DirectPlayProfile { Container: "mov", AudioCodec: "aac,mp3,ac3,eac3,flac,alac", VideoCodec: "h264", Type: Video }, DirectPlayProfile { Container: "mp3", AudioCodec: null, VideoCodec: null, Type: Audio }, DirectPlayProfile { Container: "aac", AudioCodec: null, VideoCodec: null, Type: Audio }, DirectPlayProfile { Container: "m4a", AudioCodec: "aac", VideoCodec: null, Type: Audio }, DirectPlayProfile { Container: "m4b", AudioCodec: "aac", VideoCodec: null, Type: Audio }, DirectPlayProfile { Container: "flac", AudioCodec: null, VideoCodec: null, Type: Audio }, DirectPlayProfile { Container: "alac", AudioCodec: null, VideoCodec: null, Type: Audio }, DirectPlayProfile { Container: "m4a", AudioCodec: "alac", VideoCodec: null, Type: Audio }, DirectPlayProfile { Container: "m4b", AudioCodec: "alac", VideoCodec: null, Type: Audio }, DirectPlayProfile { Container: "wav", AudioCodec: null, VideoCodec: null, Type: Audio }], TranscodingProfiles: [TranscodingProfile { Container: "aac", Type: Audio, VideoCodec: null, AudioCodec: "aac", Protocol: "hls", EstimateContentLength: False, EnableMpegtsM2TsMode: False, TranscodeSeekInfo: Auto, CopyTimestamps: False, Context: Streaming, EnableSubtitlesInManifest: False, MaxAudioChannels: "6", MinSegments: 2, SegmentLength: 0, BreakOnNonKeyFrames: True }, TranscodingProfile { Container: "aac", Type: Audio, VideoCodec: null, AudioCodec: "aac", Protocol: "http", EstimateContentLength: False, EnableMpegtsM2TsMode: False, TranscodeSeekInfo: Auto, CopyTimestamps: False, Context: Streaming, EnableSubtitlesInManifest: False, MaxAudioChannels: "6", MinSegments: 0, SegmentLength: 0, BreakOnNonKeyFrames: False }, TranscodingProfile { Container: "mp3", Type: Audio, VideoCodec: null, AudioCodec: "mp3", Protocol: "http", EstimateContentLength: False, EnableMpegtsM2TsMode: False, TranscodeSeekInfo: Auto, CopyTimestamps: False, Context: Streaming, EnableSubtitlesInManifest: False, MaxAudioChannels: "6", MinSegments: 0, SegmentLength: 0, BreakOnNonKeyFrames: False }, TranscodingProfile { Container: "wav", Type: Audio, VideoCodec: null, AudioCodec: "wav", Protocol: "http", EstimateContentLength: False, EnableMpegtsM2TsMode: False, TranscodeSeekInfo: Auto, CopyTimestamps: False, Context: Streaming, EnableSubtitlesInManifest: False, MaxAudioChannels: "6", MinSegments: 0, SegmentLength: 0, BreakOnNonKeyFrames: False }, TranscodingProfile { Container: "mp3", Type: Audio, VideoCodec: null, AudioCodec: "mp3", Protocol: "http", EstimateContentLength: False, EnableMpegtsM2TsMode: False, TranscodeSeekInfo: Auto, CopyTimestamps: False, Context: Static, EnableSubtitlesInManifest: False, MaxAudioChannels: "6", MinSegments: 0, SegmentLength: 0, BreakOnNonKeyFrames: False }, TranscodingProfile { Container: "aac", Type: Audio, VideoCodec: null, AudioCodec: "aac", Protocol: "http", EstimateContentLength: False, EnableMpegtsM2TsMode: False, TranscodeSeekInfo: Auto, CopyTimestamps: False, Context: Static, EnableSubtitlesInManifest: False, MaxAudioChannels: "6", MinSegments: 0, SegmentLength: 0, BreakOnNonKeyFrames: False }, TranscodingProfile { Container: "wav", Type: Audio, VideoCodec: null, AudioCodec: "wav", Protocol: "http", EstimateContentLength: False, EnableMpegtsM2TsMode: False, TranscodeSeekInfo: Auto, CopyTimestamps: False, Context: Static, EnableSubtitlesInManifest: False, MaxAudioChannels: "6", MinSegments: 0, SegmentLength: 0, BreakOnNonKeyFrames: False }, TranscodingProfile { Container: "ts", Type: Video, VideoCodec: "h264", AudioCodec: "aac,mp3,ac3,eac3", Protocol: "hls", EstimateContentLength: False, EnableMpegtsM2TsMode: False, TranscodeSeekInfo: Auto, CopyTimestamps: False, Context: Streaming, EnableSubtitlesInManifest: False, MaxAudioChannels: "6", MinSegments: 2, SegmentLength: 0, BreakOnNonKeyFrames: True }, TranscodingProfile { Container: "mp4", Type: Video, VideoCodec: "h264", AudioCodec: "aac,mp3,ac3,eac3,flac,alac", Protocol: "http", EstimateContentLength: False, EnableMpegtsM2TsMode: False, TranscodeSeekInfo: Auto, CopyTimestamps: False, Context: Static, EnableSubtitlesInManifest: False, MaxAudioChannels: null, MinSegments: 0, SegmentLength: 0, BreakOnNonKeyFrames: False }], ContainerProfiles: [], CodecProfiles: [CodecProfile { Type: Video, Conditions: [ProfileCondition { Condition: NotEquals, Property: IsAnamorphic, Value: "true", IsRequired: False }, ProfileCondition { Condition: EqualsAny, Property: VideoProfile, Value: "high|main|baseline|constrained baseline", IsRequired: False }, ProfileCondition { Condition: LessThanEqual, Property: VideoLevel, Value: "51", IsRequired: False }, ProfileCondition { Condition: NotEquals, Property: IsInterlaced, Value: "true", IsRequired: False }], ApplyConditions: [], Codec: "h264", Container: null }, CodecProfile { Type: Video, Conditions: [ProfileCondition { Condition: NotEquals, Property: IsAnamorphic, Value: "true", IsRequired: False }, ProfileCondition { Condition: EqualsAny, Property: VideoProfile, Value: "main|main 10", IsRequired: False }, ProfileCondition { Condition: LessThanEqual, Property: VideoLevel, Value: "183", IsRequired: False }, ProfileCondition { Condition: NotEquals, Property: IsInterlaced, Value: "true", IsRequired: False }], ApplyConditions: [], Codec: "hevc", Container: null }], ResponseProfiles: [ResponseProfile { Container: "m4v", AudioCodec: null, VideoCodec: null, Type: Video, OrgPn: null, MimeType: "video/mp4", Conditions: [] }], SubtitleProfiles: [SubtitleProfile { Format: "vtt", Method: External, DidlMode: null, Language: null, Container: null }, SubtitleProfile { Format: "ass", Method: External, DidlMode: null, Language: null, Container: null }, SubtitleProfile { Format: "ssa", Method: External, DidlMode: null, Language: null, Container: null }] }
+[2022-11-01 08:50:21.449 +00:00] [INF] [82] Jellyfin.Api.Helpers.MediaInfoHelper: User policy for "fermin". EnablePlaybackRemuxing: True EnableVideoPlaybackTranscoding: True EnableAudioPlaybackTranscoding: True
+[2022-11-01 08:50:21.449 +00:00] [INF] [82] Jellyfin.Api.Helpers.MediaInfoHelper: Profile: "Unknown Profile", Path: "/media/0301.计算机性能指标和阿姆达尔解决方案.wmv", isEligibleForDirectPlay: True, isEligibleForDirectStream: True
+[2022-11-01 08:50:21.449 +00:00] [INF] [82] Jellyfin.Api.Helpers.MediaInfoHelper: Profile: "Unknown Profile", No video direct play profiles found for "/media/0301.计算机性能指标和阿姆达尔解决方案.wmv" with codec "wmv3"
+[2022-11-01 08:50:21.450 +00:00] [INF] [82] Jellyfin.Api.Helpers.MediaInfoHelper: Profile: "Unknown Profile", Path: "/media/0301.计算机性能指标和阿姆达尔解决方案.wmv", isEligibleForDirectPlay: True, isEligibleForDirectStream: True
+[2022-11-01 08:50:21.450 +00:00] [INF] [82] Jellyfin.Api.Helpers.MediaInfoHelper: Profile: "Unknown Profile", No video direct play profiles found for "/media/0301.计算机性能指标和阿姆达尔解决方案.wmv" with codec "wmv3"
+[2022-11-01 08:50:21.450 +00:00] [INF] [82] Jellyfin.Api.Helpers.MediaInfoHelper: Profile: "Unknown Profile", Path: "/media/0301.计算机性能指标和阿姆达尔解决方案.wmv", isEligibleForDirectPlay: True, isEligibleForDirectStream: True
+[2022-11-01 08:50:21.451 +00:00] [INF] [82] Jellyfin.Api.Helpers.MediaInfoHelper: Profile: "Unknown Profile", No video direct play profiles found for "/media/0301.计算机性能指标和阿姆达尔解决方案.wmv" with codec "wmv3"
+[2022-11-01 08:50:23.059 +00:00] [INF] [82] Jellyfin.Api.Controllers.DynamicHlsController: Current HLS implementation doesn't support non-keyframe breaks but one is requested, ignoring that request
+[2022-11-01 08:50:23.061 +00:00] [INF] [82] Jellyfin.Api.Helpers.TranscodingJobHelper: /usr/lib/jellyfin-ffmpeg/ffmpeg -async 1 -f asf -i file:"/media/0301.计算机性能指标和阿姆达尔解决方案.wmv" -map_metadata -1 -map_chapters -1 -threads 0 -map 0:0 -map 0:1 -map -0:s -codec:v:0 libx264 -pix_fmt yuv420p -preset veryfast -crf 23 -maxrate 1870344 -bufsize 3740688 -profile:v:0 high -level 41 -x264opts:0 subme=0:me_range=4:rc_lookahead=10:me=dia:no_chroma_me:8x8dct=0:partitions=none  -force_key_frames:0 "expr:gte(t,0+n_forced*3)" -vf "scale=trunc(min(max(iw\,ih*dar)\,min(1920\,1080*dar))/2)*2:trunc(min(max(iw/dar\,ih)\,min(1920/dar\,1080))/2)*2" -start_at_zero -vsync -1 -codec:a:0 aac -ac 2 -ab 384000 -copyts -avoid_negative_ts disabled -max_muxing_queue_size 2048 -f hls -max_delay 5000000 -hls_time 3 -hls_segment_type mpegts -start_number 0 -hls_segment_filename "/config/transcodes/814947a12b1752b7fe502c06f18e612c%d.ts" -hls_playlist_type vod -hls_list_size 0 -y "/config/transcodes/814947a12b1752b7fe502c06f18e612c.m3u8"
+[2022-11-01 08:50:24.219 +00:00] [WRN] [65] Jellyfin.Server.Middleware.ResponseTimeMiddleware: Slow HTTP Response from "http://192.168.40.252:8096/videos/ea7ae533-a074-3fe4-830d-497223db2f72/hls1/main/0.ts?DeviceId=TW96aWxsYS81LjAgKGlQaG9uZTsgQ1BVIGlQaG9uZSBPUyAxNl8xIGxpa2UgTWFjIE9TIFgpIEFwcGxlV2ViS2l0LzYwNS4xLjE1IChLSFRNTCwgbGlrZSBHZWNrbykgTW9iaWxlLzE1RTE0OCBNaWNyb01lc3Nlbmdlci84LjAuMjkoMHgxODAwMWQzNCkgTmV0VHlwZS9XSUZJIExhbmd1YWdlL3poX0NOfDE2NjcyOTI0MzY5MDQ1&MediaSourceId=ea7ae533a0743fe4830d497223db2f72&VideoCodec=h264&AudioCodec=aac,mp3,ac3,eac3&AudioStreamIndex=1&VideoBitrate=139616000&AudioBitrate=384000&PlaySessionId=4192019b81ed4d84a6f320594497ab80&api_key=58fe4c8bb4184689a94b5927a51765a5&TranscodingMaxAudioChannels=6&RequireAvc=false&Tag=bc912b0b018c80eb818652feadea4904&SegmentContainer=ts&MinSegments=2&BreakOnNonKeyFrames=True&h264-profile=high,main,baseline,constrainedbaseline&h264-level=51&h264-deinterlace=true&TranscodeReasons=ContainerNotSupported,VideoCodecNotSupported,AudioCodecNotSupported" to "172.19.0.1" in 0:00:01.1695543 with Status Code 200
+[2022-11-01 08:50:35.388 +00:00] [INF] [72] Emby.Server.Implementations.HttpServer.WebSocketManager: WS "172.19.0.1" closed
+[2022-11-01 08:50:43.751 +00:00] [INF] [68] Emby.Server.Implementations.HttpServer.WebSocketManager: WS "172.19.0.1" closed
+[2022-11-01 08:50:44.386 +00:00] [INF] [82] Emby.Server.Implementations.HttpServer.WebSocketManager: WS "172.19.0.1" request
+[2022-11-01 08:51:53.552 +00:00] [INF] [64] Emby.Server.Implementations.HttpServer.WebSocketManager: WS "172.19.0.1" closed
+[2022-11-01 08:51:53.958 +00:00] [INF] [65] Emby.Server.Implementations.HttpServer.WebSocketManager: WS "172.19.0.1" request
+[2022-11-01 08:52:15.588 +00:00] [INF] [66] Jellyfin.Api.Helpers.TranscodingJobHelper: FFmpeg exited with code 0
+[2022-11-01 08:52:34.932 +00:00] [INF] [70] Jellyfin.Api.Helpers.TranscodingJobHelper: Transcoding kill timer stopped for JobId "43f2c4101974499f9d2d71cee87d53fc" PlaySessionId "4192019b81ed4d84a6f320594497ab80". Killing transcoding
+[2022-11-01 08:52:34.933 +00:00] [INF] [70] Jellyfin.Api.Helpers.TranscodingJobHelper: Deleting partial stream file(s) "/config/transcodes/814947a12b1752b7fe502c06f18e612c.m3u8"
+[2022-11-01 08:52:37.181 +00:00] [ERR] [65] MediaBrowser.Providers.Manager.ProviderManager: Provider "TheMovieDb" failed to retrieve search results
+System.Net.Http.HttpRequestException: Cannot assign requested address (api.themoviedb.org:443)
+ ---> System.Net.Sockets.SocketException (99): Cannot assign requested address
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|283_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.DefaultConnectAsync(SocketsHttpConnectionContext context, CancellationToken cancellationToken)
+   at System.Net.Http.ConnectHelper.ConnectAsync(Func`3 callback, DnsEndPoint endPoint, HttpRequestMessage requestMessage, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.ConnectAsync(Func`3 callback, DnsEndPoint endPoint, HttpRequestMessage requestMessage, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.SendAsyncCore(HttpRequestMessage request, HttpCompletionOption completionOption, Boolean async, Boolean emitTelemetryStartStop, CancellationToken cancellationToken)
+   at TMDbLib.Rest.RestRequest.SendInternal(HttpMethod method, CancellationToken cancellationToken)
+   at TMDbLib.Rest.RestRequest.ExecuteGet[T](CancellationToken cancellationToken)
+   at TMDbLib.Client.TMDbClient.GetConfigAsync()
+   at MediaBrowser.Providers.Plugins.Tmdb.TmdbClientManager.SearchMovieAsync(String name, Int32 year, String language, CancellationToken cancellationToken)
+   at MediaBrowser.Providers.Plugins.Tmdb.Movies.TmdbMovieProvider.GetSearchResults(MovieInfo searchInfo, CancellationToken cancellationToken)
+   at MediaBrowser.Providers.Manager.ProviderManager.GetSearchResults[TLookupType](IRemoteSearchProvider`1 provider, TLookupType searchInfo, CancellationToken cancellationToken)
+   at MediaBrowser.Providers.Manager.ProviderManager.GetRemoteSearchResults[TItemType,TLookupType](RemoteSearchQuery`1 searchInfo, BaseItem referenceItem, CancellationToken cancellationToken)
+[2022-11-01 08:52:38.042 +00:00] [WRN] [65] Jellyfin.Server.Middleware.ResponseTimeMiddleware: Slow HTTP Response from "http://127.0.0.1:8096/Items/RemoteSearch/Movie" to "172.19.0.1" in 0:01:15.9802326 with Status Code 200
+[2022-11-01 08:52:55.573 +00:00] [ERR] [62] MediaBrowser.Providers.Movies.MovieMetadataService: Error in "TheMovieDb"
+System.Net.Http.HttpRequestException: Cannot assign requested address (api.themoviedb.org:443)
+ ---> System.Net.Sockets.SocketException (99): Cannot assign requested address
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|283_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.DefaultConnectAsync(SocketsHttpConnectionContext context, CancellationToken cancellationToken)
+   at System.Net.Http.ConnectHelper.ConnectAsync(Func`3 callback, DnsEndPoint endPoint, HttpRequestMessage requestMessage, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.ConnectAsync(Func`3 callback, DnsEndPoint endPoint, HttpRequestMessage requestMessage, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.SendAsyncCore(HttpRequestMessage request, HttpCompletionOption completionOption, Boolean async, Boolean emitTelemetryStartStop, CancellationToken cancellationToken)
+   at TMDbLib.Rest.RestRequest.SendInternal(HttpMethod method, CancellationToken cancellationToken)
+   at TMDbLib.Rest.RestRequest.ExecuteGet[T](CancellationToken cancellationToken)
+   at TMDbLib.Client.TMDbClient.GetConfigAsync()
+   at MediaBrowser.Providers.Plugins.Tmdb.TmdbClientManager.FindByExternalIdAsync(String externalId, FindExternalSource source, String language, CancellationToken cancellationToken)
+   at MediaBrowser.Providers.Plugins.Tmdb.Movies.TmdbMovieProvider.GetMetadata(MovieInfo info, CancellationToken cancellationToken)
+   at MediaBrowser.Providers.Manager.MetadataService`2.ExecuteRemoteProviders(MetadataResult`1 temp, String logName, TIdType id, IEnumerable`1 providers, CancellationToken cancellationToken)
+[2022-11-01 08:54:10.656 +00:00] [ERR] [64] MediaBrowser.Providers.Manager.ProviderManager: "TmdbMovieImageProvider" failed in GetImageInfos for type "Movie" at "/media/0302.计算机性能评价方法.wmv"
+System.Net.Http.HttpRequestException: Cannot assign requested address (api.themoviedb.org:443)
+ ---> System.Net.Sockets.SocketException (99): Cannot assign requested address
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|283_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.DefaultConnectAsync(SocketsHttpConnectionContext context, CancellationToken cancellationToken)
+   at System.Net.Http.ConnectHelper.ConnectAsync(Func`3 callback, DnsEndPoint endPoint, HttpRequestMessage requestMessage, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.ConnectHelper.ConnectAsync(Func`3 callback, DnsEndPoint endPoint, HttpRequestMessage requestMessage, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttpConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.SendAsyncCore(HttpRequestMessage request, HttpCompletionOption completionOption, Boolean async, Boolean emitTelemetryStartStop, CancellationToken cancellationToken)
+   at TMDbLib.Rest.RestRequest.SendInternal(HttpMethod method, CancellationToken cancellationToken)
+   at TMDbLib.Rest.RestRequest.ExecuteGet[T](CancellationToken cancellationToken)
+   at TMDbLib.Client.TMDbClient.GetConfigAsync()
+   at MediaBrowser.Providers.Plugins.Tmdb.TmdbClientManager.FindByExternalIdAsync(String externalId, FindExternalSource source, String language, CancellationToken cancellationToken)
+   at MediaBrowser.Providers.Plugins.Tmdb.Movies.TmdbMovieImageProvider.GetImages(BaseItem item, CancellationToken cancellationToken)
+   at MediaBrowser.Providers.Manager.ProviderManager.GetImages(BaseItem item, IRemoteImageProvider provider, IReadOnlyCollection`1 preferredLanguages, CancellationToken cancellationToken, Nullable`1 type)
+[2022-11-01 08:55:52.715 +00:00] [INF] [70] Emby.Server.Implementations.HttpServer.WebSocketManager: WS "172.19.0.1" closed
+[2022-11-01 09:08:19.033 +00:00] [INF] [75] Emby.Server.Implementations.IO.LibraryMonitor: "media" ("/media") will be refreshed.
+[2022-11-01 09:08:19.152 +00:00] [INF] [10] Emby.Server.Implementations.Library.LibraryManager: Removing item, Type: "Movie", Name: "0301.计算机性能指标和阿姆达尔解决方案", Path: "/media/0301.计算机性能指标和阿姆达尔解决方案.wmv", Id: ea7ae533-a074-3fe4-830d-497223db2f72
+[2022-11-01 09:08:19.290 +00:00] [INF] [10] Emby.Server.Implementations.Library.LibraryManager: Removing item, Type: "Movie", Name: "0207.磁盘工作原理.wmv", Path: "/media/0207.磁盘工作原理.wmv", Id: 8842e3d0-788f-7814-b66f-b73b35dbf269
+[2022-11-01 09:08:19.409 +00:00] [INF] [10] Emby.Server.Implementations.Library.LibraryManager: Removing item, Type: "Movie", Name: "0206.随机存储器和只读存储器", Path: "/media/0206.随机存储器和只读存储器.wmv", Id: 27ca5621-2200-aa23-ec60-9b361e5cd71b
+[2022-11-01 09:08:19.567 +00:00] [INF] [10] Emby.Server.Implementations.Library.LibraryManager: Removing item, Type: "Movie", Name: "301, 302", Path: "/media/0302.计算机性能评价方法.wmv", Id: 6e8c8211-3466-0ea6-777f-f74fe410ea83
+[2022-11-01 09:20:33.173 +00:00] [INF] [69] Emby.Server.Implementations.ScheduledTasks.TaskManager: "IntervalTrigger" fired for task: "下载缺少的字幕"
+[2022-11-01 09:20:33.173 +00:00] [INF] [69] Emby.Server.Implementations.ScheduledTasks.TaskManager: Queuing task "SubtitleScheduledTask"
+[2022-11-01 09:20:33.174 +00:00] [INF] [21] Emby.Server.Implementations.ScheduledTasks.TaskManager: Executing "下载缺少的字幕"
+[2022-11-01 09:20:33.178 +00:00] [INF] [96] Emby.Server.Implementations.ScheduledTasks.TaskManager: "IntervalTrigger" fired for task: "刷新人员"
+[2022-11-01 09:20:33.178 +00:00] [INF] [96] Emby.Server.Implementations.ScheduledTasks.TaskManager: Queuing task "PeopleValidationTask"
+[2022-11-01 09:20:33.178 +00:00] [INF] [96] Emby.Server.Implementations.ScheduledTasks.TaskManager: Executing "刷新人员"
+[2022-11-01 09:20:33.184 +00:00] [INF] [20] Emby.Server.Implementations.ScheduledTasks.TaskManager: "IntervalTrigger" fired for task: "更新插件"
+[2022-11-01 09:20:33.185 +00:00] [INF] [20] Emby.Server.Implementations.ScheduledTasks.TaskManager: Queuing task "PluginUpdateTask"
+[2022-11-01 09:20:33.185 +00:00] [INF] [20] Emby.Server.Implementations.ScheduledTasks.TaskManager: Executing "更新插件"
+[2022-11-01 09:20:33.187 +00:00] [INF] [69] Emby.Server.Implementations.ScheduledTasks.TaskManager: "IntervalTrigger" fired for task: "扫描媒体库"
+[2022-11-01 09:20:33.187 +00:00] [INF] [69] Emby.Server.Implementations.ScheduledTasks.TaskManager: Queuing task "RefreshMediaLibraryTask"
+[2022-11-01 09:20:33.188 +00:00] [INF] [69] Emby.Server.Implementations.ScheduledTasks.TaskManager: Executing "扫描媒体库"
+[2022-11-01 09:20:33.189 +00:00] [INF] [21] Emby.Server.Implementations.ScheduledTasks.TaskManager: "下载缺少的字幕" Completed after 0 minute(s) and 0 seconds
+[2022-11-01 09:20:33.191 +00:00] [INF] [69] Emby.Server.Implementations.IO.LibraryMonitor: Stopping directory watching for path "/media"
+[2022-11-01 09:20:33.193 +00:00] [INF] [97] Emby.Server.Implementations.ScheduledTasks.TaskManager: "IntervalTrigger" fired for task: "清理缓存目录"
+[2022-11-01 09:20:33.193 +00:00] [INF] [97] Emby.Server.Implementations.ScheduledTasks.TaskManager: Queuing task "DeleteCacheFileTask"
+[2022-11-01 09:20:33.193 +00:00] [INF] [77] Emby.Server.Implementations.ScheduledTasks.TaskManager: "IntervalTrigger" fired for task: "清理日志目录"
+[2022-11-01 09:20:33.193 +00:00] [INF] [77] Emby.Server.Implementations.ScheduledTasks.TaskManager: Queuing task "DeleteLogFileTask"
+[2022-11-01 09:20:33.194 +00:00] [INF] [19] Emby.Server.Implementations.ScheduledTasks.TaskManager: Executing "清理缓存目录"
+[2022-11-01 09:20:33.194 +00:00] [INF] [77] Emby.Server.Implementations.ScheduledTasks.TaskManager: Executing "清理日志目录"
+[2022-11-01 09:20:33.196 +00:00] [INF] [97] Emby.Server.Implementations.ScheduledTasks.TaskManager: "IntervalTrigger" fired for task: "清理转码目录"
+[2022-11-01 09:20:33.196 +00:00] [INF] [97] Emby.Server.Implementations.ScheduledTasks.TaskManager: Queuing task "DeleteTranscodeFileTask"
+[2022-11-01 09:20:33.196 +00:00] [INF] [97] Emby.Server.Implementations.ScheduledTasks.TaskManager: Executing "清理转码目录"
+[2022-11-01 09:20:33.198 +00:00] [INF] [69] Emby.Server.Implementations.Library.LibraryManager: Validating media library
+[2022-11-01 09:20:33.214 +00:00] [INF] [21] Emby.Server.Implementations.ScheduledTasks.TaskManager: ExecuteQueuedTasks
+[2022-11-01 09:20:33.326 +00:00] [INF] [20] Emby.Server.Implementations.ScheduledTasks.TaskManager: "IntervalTrigger" fired for task: "Refresh Guide"
+[2022-11-01 09:20:33.326 +00:00] [INF] [20] Emby.Server.Implementations.ScheduledTasks.TaskManager: Queuing task "RefreshChannelsScheduledTask"
+[2022-11-01 09:20:33.326 +00:00] [INF] [20] Emby.Server.Implementations.ScheduledTasks.TaskManager: Executing "Refresh Guide"
+[2022-11-01 09:20:33.327 +00:00] [INF] [97] Emby.Server.Implementations.ScheduledTasks.TaskManager: "清理转码目录" Completed after 0 minute(s) and 0 seconds
+[2022-11-01 09:20:33.333 +00:00] [INF] [21] Emby.Server.Implementations.ScheduledTasks.TaskManager: "IntervalTrigger" fired for task: "TasksRefreshChannels"
+[2022-11-01 09:20:33.334 +00:00] [INF] [21] Emby.Server.Implementations.ScheduledTasks.TaskManager: Queuing task "RefreshChannelsScheduledTask"
+[2022-11-01 09:20:33.334 +00:00] [INF] [21] Emby.Server.Implementations.ScheduledTasks.TaskManager: Executing "TasksRefreshChannels"
+[2022-11-01 09:20:33.345 +00:00] [INF] [77] Emby.Server.Implementations.ScheduledTasks.TaskManager: "清理日志目录" Completed after 0 minute(s) and 0 seconds
+[2022-11-01 09:20:33.350 +00:00] [INF] [97] Emby.Server.Implementations.ScheduledTasks.TaskManager: ExecuteQueuedTasks
+[2022-11-01 09:20:33.385 +00:00] [INF] [19] Emby.Server.Implementations.ScheduledTasks.TaskManager: "清理缓存目录" Completed after 0 minute(s) and 0 seconds
+[2022-11-01 09:20:33.387 +00:00] [INF] [77] Emby.Server.Implementations.ScheduledTasks.TaskManager: ExecuteQueuedTasks
+[2022-11-01 09:20:33.418 +00:00] [INF] [21] Emby.Server.Implementations.ScheduledTasks.TaskManager: "TasksRefreshChannels" Completed after 0 minute(s) and 0 seconds
+[2022-11-01 09:20:33.418 +00:00] [INF] [96] Emby.Server.Implementations.Library.LibraryManager: People validation complete
+[2022-11-01 09:20:33.418 +00:00] [INF] [96] Emby.Server.Implementations.ScheduledTasks.TaskManager: "刷新人员" Completed after 0 minute(s) and 0 seconds
+[2022-11-01 09:20:33.431 +00:00] [INF] [19] Emby.Server.Implementations.ScheduledTasks.TaskManager: ExecuteQueuedTasks
+[2022-11-01 09:20:33.459 +00:00] [INF] [21] Emby.Server.Implementations.ScheduledTasks.TaskManager: ExecuteQueuedTasks
+[2022-11-01 09:20:33.488 +00:00] [INF] [96] Emby.Server.Implementations.ScheduledTasks.TaskManager: ExecuteQueuedTasks
+[2022-11-01 09:20:33.553 +00:00] [INF] [20] Emby.Server.Implementations.ScheduledTasks.TaskManager: "扫描媒体库" Completed after 0 minute(s) and 0 seconds
+[2022-11-01 09:20:33.555 +00:00] [INF] [77] Emby.Server.Implementations.IO.LibraryMonitor: Watching directory /media
+[2022-11-01 09:20:33.562 +00:00] [INF] [20] Emby.Server.Implementations.ScheduledTasks.TaskManager: ExecuteQueuedTasks
+[2022-11-01 09:20:36.556 +00:00] [INF] [20] Emby.Server.Implementations.LiveTv.LiveTvManager: Refreshing guide with 7 days of guide data
+[2022-11-01 09:20:36.568 +00:00] [INF] [20] Emby.Server.Implementations.ScheduledTasks.TaskManager: "Refresh Guide" Completed after 0 minute(s) and 3 seconds
+[2022-11-01 09:20:36.574 +00:00] [INF] [20] Emby.Server.Implementations.ScheduledTasks.TaskManager: ExecuteQueuedTasks
+[2022-11-01 09:20:38.390 +00:00] [INF] [21] Emby.Server.Implementations.ScheduledTasks.TaskManager: "更新插件" Completed after 0 minute(s) and 5 seconds
+[2022-11-01 09:20:38.405 +00:00] [INF] [21] Emby.Server.Implementations.ScheduledTasks.TaskManager: ExecuteQueuedTasks
