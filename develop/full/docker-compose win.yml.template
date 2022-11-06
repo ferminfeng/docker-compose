@@ -22,7 +22,7 @@ services:
       - ./etc/nginx/conf.d/vhost:/usr/local/openresty/nginx/conf/vhost
       - ./etc/nginx/conf.d/nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf
       - ./log/nginx:/var/log/nginx
-      - /var/www:/var/www
+      - D:/www:/var/www
     privileged: true
     restart: always
 
@@ -36,7 +36,7 @@ services:
       - ./etc/php56/php-fpm.conf:/usr/local/etc/php-fpm.conf
       - ./etc/php56/php.ini:/usr/local/etc/php/php.ini
       - ./etc/php56/conf.d:/usr/local/etc/php/conf.d
-      - /var/www:/var/www
+      - D:/www:/var/www
     privileged: true
     restart: always
 
@@ -50,7 +50,7 @@ services:
       - ./etc/php73/php-fpm.conf:/usr/local/etc/php-fpm.conf
       - ./log/php73:/var/log/php-fpm
       - ./etc/php73/conf.d:/usr/local/etc/php/conf.d
-      - /var/www:/var/www
+      - D:/www:/var/www
     privileged: true
     restart: always
 
@@ -70,19 +70,21 @@ services:
       - ./etc/php74/supervisor:/etc/supervisor
       - ./log/php74:/var/log/php-fpm
       - ./log/supervisor:/var/log/supervisor
-      - /var/www:/var/www
+      - D:/www:/var/www
     privileged: true
     restart: always
 
 
 # 预留10个端口给 postgres 14120-14129
+# 将root创建为超级用户，login是指允许登录
+# CREATE ROLE root superuser PASSWORD '123456' login;
   full_postgres:
     container_name: full_postgres
     image: postgres
     ports:
       - 14120:5432
     volumes:
-      - ./data/postgres:/var/lib/postgresql
+      - ./data/postgresql/data:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: 123456
       ALLOW_IP_RANGE: 0.0.0.0/0 
@@ -108,7 +110,6 @@ services:
   full_rabbitmq:
     container_name: full_rabbitmq
     image: rabbitmq:management
-    restart: always
     ports:
       - 14140:15672
       - 14141:5672
@@ -118,10 +119,11 @@ services:
     environment:
       RABBITMQ_DEFAULT_USER: admin
       RABBITMQ_DEFAULT_PASS: admin
-    # volumes:
-    #   - ./etc/rabbitmq:/etc/rabbitmq 
-    #   - ./data/rabbitmq:/var/lib/rabbitmq 
-    #   - ./log/rabbitmq:/var/log/rabbitmq/log
+    volumes:
+      # - ./etc/rabbitmq:/etc/rabbitmq 
+      - ./data/rabbitmq:/var/lib/rabbitmq 
+      - ./log/rabbitmq:/var/log/rabbitmq/log
+    restart: always
 
 
 # 预留10个端口给 mongo 14150-14159
@@ -144,13 +146,13 @@ services:
   full_mongo_express:
     container_name: full_mongo_express
     image: mongo-express
-    restart: always
     ports:
       - 14151:8081
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: root
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
       ME_CONFIG_MONGODB_URL: mongodb://root:example@full_mongo:27017/
+    restart: always
 
 
 # 预留10个端口给redis 14160-14169
@@ -169,16 +171,6 @@ services:
       REDIS_2_NAME: full_redis50
       REDIS_2_PORT: 6379
       REDIS_2_AUTH: 123456
-
-      # REDIS_3_HOST: 123.60.138.234
-      # REDIS_3_NAME: funny_server_user
-      # REDIS_3_PORT: 30149
-      # REDIS_3_AUTH: nkhVQT8Ylscqa2KE
-
-      # REDIS_4_HOST: 123.60.138.234
-      # REDIS_4_NAME: hw-redis-funny
-      # REDIS_4_PORT: 30103
-      # REDIS_4_AUTH: OaA1@QeR0!V2N4uPBj
     restart: always
 
 
@@ -192,8 +184,8 @@ services:
       - ./etc/redis40:/etc/redis
       - ./log/redis40:/var/log/redis
       - ./data/redis40:/data
-    restart: always
     command: redis-server /etc/redis/redis.conf --appendonly yes
+    restart: always
 
 
   # redis-game
@@ -206,8 +198,8 @@ services:
       - ./etc/redis50:/etc/redis
       - ./log/redis50:/var/log/redis
       - ./data/redis50:/data
-    restart: always
     command: redis-server /etc/redis/redis.conf --appendonly yes
+    restart: always
 
 
 
@@ -215,7 +207,7 @@ services:
   # kyk_jenkins:
   #   container_name: kyk_jenkins
   #   image: jenkins/jenkins:lts
-  #   restart: always
   #   ports:
   #     - 14170:8080
   #     - 14171:5000
+  #   restart: always
