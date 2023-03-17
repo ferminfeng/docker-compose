@@ -158,11 +158,14 @@ services:
       - ./data/rabbitmq:/var/lib/rabbitmq 
       - ./log/rabbitmq:/var/log/rabbitmq/log
     restart: always
+<<<<<<< HEAD
     platform: linux/x86_64
     networks:
       full:
         aliases:
           - full_rabbitmq
+=======
+>>>>>>> ffd7d31a9dfeddb5bfc4509778737340b81882ea
 
 
 # 预留10个端口给 mongo 14150-14159
@@ -187,6 +190,7 @@ services:
           - full_mongo
 
 
+<<<<<<< HEAD
   # full_mongo_express:
   #   container_name: full_mongo_express
   #   image: mongo-express
@@ -202,6 +206,18 @@ services:
   #     full:
   #       aliases:
   #         - full_mongo_express
+=======
+  full_mongo_express:
+    container_name: full_mongo_express
+    image: mongo-express
+    ports:
+      - 14151:8081
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: root
+      ME_CONFIG_MONGODB_ADMINPASSWORD: example
+      ME_CONFIG_MONGODB_URL: mongodb://root:example@full_mongo:27017/
+    restart: always
+>>>>>>> ffd7d31a9dfeddb5bfc4509778737340b81882ea
 
 
 # 预留10个端口给redis 14160-14169
@@ -216,6 +232,7 @@ services:
   #     REDIS_1_PORT: 6379
   #     REDIS_1_AUTH: 123456
       
+<<<<<<< HEAD
   #     REDIS_2_HOST: full_redis50
   #     REDIS_2_NAME: full_redis50
   #     REDIS_2_PORT: 6379
@@ -226,6 +243,13 @@ services:
   #     full:
   #       aliases:
   #         - full_php_redis_admin
+=======
+      REDIS_2_HOST: full_redis50
+      REDIS_2_NAME: full_redis50
+      REDIS_2_PORT: 6379
+      REDIS_2_AUTH: 123456
+    restart: always
+>>>>>>> ffd7d31a9dfeddb5bfc4509778737340b81882ea
 
 
   # redis-funny
@@ -240,11 +264,14 @@ services:
       - ./data/redis40:/data
     command: redis-server /etc/redis/redis.conf --appendonly yes
     restart: always
+<<<<<<< HEAD
     platform: linux/x86_64
     networks:
       full:
         aliases:
           - full_redis40
+=======
+>>>>>>> ffd7d31a9dfeddb5bfc4509778737340b81882ea
 
 
   # redis-game
@@ -259,11 +286,14 @@ services:
       - ./data/redis50:/data
     command: redis-server /etc/redis/redis.conf --appendonly yes
     restart: always
+<<<<<<< HEAD
     platform: linux/x86_64
     networks:
       full:
         aliases:
           - full_redis50
+=======
+>>>>>>> ffd7d31a9dfeddb5bfc4509778737340b81882ea
 
 
 # 预留10个端口给shenyu 14170-14179
@@ -351,6 +381,7 @@ services:
   #     - 14170:8080
   #     - 14171:5000
   #   restart: always
+<<<<<<< HEAD
   #   platform: linux/x86_64
   #   networks:
   #     full:
@@ -453,3 +484,5 @@ networks:
   full:
     name: full
     driver: bridge
+=======
+>>>>>>> ffd7d31a9dfeddb5bfc4509778737340b81882ea
