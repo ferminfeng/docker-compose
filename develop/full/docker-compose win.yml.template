@@ -105,7 +105,6 @@ services:
     container_name: full_postgres
     image: postgres
     ports:
-      # - 14120:5432
       - 5432:5432
     volumes:
       - ./data/postgresql/data:/var/lib/postgresql/data
@@ -144,6 +143,7 @@ services:
   full_rabbitmq:
     container_name: full_rabbitmq
     image: rabbitmq:management
+  # image: heidiks/rabbitmq-delayed-message-exchange:3.9.11-management
     ports:
       - 14140:15672
       - 14141:5672
@@ -158,20 +158,18 @@ services:
       - ./data/rabbitmq:/var/lib/rabbitmq 
       - ./log/rabbitmq:/var/log/rabbitmq/log
     restart: always
-<<<<<<< HEAD
     platform: linux/x86_64
     networks:
       full:
         aliases:
           - full_rabbitmq
-=======
->>>>>>> ffd7d31a9dfeddb5bfc4509778737340b81882ea
 
 
 # 预留10个端口给 mongo 14150-14159
   full_mongo:
     container_name: full_mongo
-    image: mongo
+    # image: mongo
+    image: mongo:4.4
     ports:
       - 14150:27017
     environment:
@@ -190,7 +188,6 @@ services:
           - full_mongo
 
 
-<<<<<<< HEAD
   # full_mongo_express:
   #   container_name: full_mongo_express
   #   image: mongo-express
@@ -206,18 +203,6 @@ services:
   #     full:
   #       aliases:
   #         - full_mongo_express
-=======
-  full_mongo_express:
-    container_name: full_mongo_express
-    image: mongo-express
-    ports:
-      - 14151:8081
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: example
-      ME_CONFIG_MONGODB_URL: mongodb://root:example@full_mongo:27017/
-    restart: always
->>>>>>> ffd7d31a9dfeddb5bfc4509778737340b81882ea
 
 
 # 预留10个端口给redis 14160-14169
@@ -232,7 +217,6 @@ services:
   #     REDIS_1_PORT: 6379
   #     REDIS_1_AUTH: 123456
       
-<<<<<<< HEAD
   #     REDIS_2_HOST: full_redis50
   #     REDIS_2_NAME: full_redis50
   #     REDIS_2_PORT: 6379
@@ -243,38 +227,27 @@ services:
   #     full:
   #       aliases:
   #         - full_php_redis_admin
-=======
-      REDIS_2_HOST: full_redis50
-      REDIS_2_NAME: full_redis50
-      REDIS_2_PORT: 6379
-      REDIS_2_AUTH: 123456
-    restart: always
->>>>>>> ffd7d31a9dfeddb5bfc4509778737340b81882ea
 
 
-  # redis-funny
-  full_redis40:
-    container_name: full_redis40
-    image: redis:4.0
-    ports:
-      - 14161:6379
-    volumes:
-      - ./etc/redis40:/etc/redis
-      - ./log/redis40:/var/log/redis
-      - ./data/redis40:/data
-    command: redis-server /etc/redis/redis.conf --appendonly yes
-    restart: always
-<<<<<<< HEAD
-    platform: linux/x86_64
-    networks:
-      full:
-        aliases:
-          - full_redis40
-=======
->>>>>>> ffd7d31a9dfeddb5bfc4509778737340b81882ea
+
+  # full_redis40:
+  #   container_name: full_redis40
+  #   image: redis:4.0
+  #   ports:
+  #     - 14161:6379
+  #   volumes:
+  #     - ./etc/redis40:/etc/redis
+  #     - ./log/redis40:/var/log/redis
+  #     - ./data/redis40:/data
+  #   command: redis-server /etc/redis/redis.conf --appendonly yes
+  #   restart: always
+  #   platform: linux/x86_64
+  #   networks:
+  #     full:
+  #       aliases:
+  #         - full_redis40
 
 
-  # redis-game
   full_redis50:
     container_name: full_redis50
     image: redis:5.0
@@ -286,14 +259,11 @@ services:
       - ./data/redis50:/data
     command: redis-server /etc/redis/redis.conf --appendonly yes
     restart: always
-<<<<<<< HEAD
     platform: linux/x86_64
     networks:
       full:
         aliases:
           - full_redis50
-=======
->>>>>>> ffd7d31a9dfeddb5bfc4509778737340b81882ea
 
 
 # 预留10个端口给shenyu 14170-14179
@@ -381,7 +351,6 @@ services:
   #     - 14170:8080
   #     - 14171:5000
   #   restart: always
-<<<<<<< HEAD
   #   platform: linux/x86_64
   #   networks:
   #     full:
@@ -412,6 +381,7 @@ services:
   full_nats:
     container_name: full_nats
     image: nats:latest
+    # image: zhusaidong/nacos-server-m1:2.0.3
     ports:
       - 4222:4222
     restart: always
@@ -433,7 +403,7 @@ services:
       - ./log/rocketmq:/home/rocketmq/logs
       - ./data/rocketmq:/home/rocketmq/store
     command: sh mqnamesrv
-    platform: linux/x86_64
+    platform: linux/amd64
     networks:
       full:
         aliases:
@@ -455,7 +425,7 @@ services:
     command: sh mqbroker -n full_rmqnamesrv:9876 -c ../conf/broker.conf
     depends_on:
       - full_rmqnamesrv
-    platform: linux/x86_64
+    platform: linux/amd64
     networks:
       full:
         aliases:
@@ -473,7 +443,7 @@ services:
     environment:
       - JAVA_OPTS= -Dlogging.level.root=info -Drocketmq.namesrv.addr=full_rmqnamesrv:9876 
       - Dcom.rocketmq.sendMessageWithVIPChannel=false
-    platform: linux/x86_64
+    platform: linux/amd64
     networks:
       full:
         aliases:
@@ -484,5 +454,3 @@ networks:
   full:
     name: full
     driver: bridge
-=======
->>>>>>> ffd7d31a9dfeddb5bfc4509778737340b81882ea
