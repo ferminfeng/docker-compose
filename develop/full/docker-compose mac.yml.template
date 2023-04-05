@@ -16,6 +16,8 @@ services:
       - 14005:1405 # ybd-shop-admin
       - 14006:1406 # dyd-funny-game
 
+      # animalCrossing
+      - 14007:1407 
       - 14099:14099 # xhprof
     volumes:
       - ./etc/nginx/conf.d/ext:/etc/nginx/conf.d/ext
@@ -25,6 +27,12 @@ services:
       - /var/www:/var/www
     privileged: true
     restart: always
+    platform: linux/x86_64
+    networks:
+      full:
+        aliases:
+          - full_nginx
+
 
 # 预留10个端口给php 14100-14109
   full_php56:
@@ -39,6 +47,11 @@ services:
       - /var/www:/var/www
     privileged: true
     restart: always
+    platform: linux/x86_64
+    networks:
+      full:
+        aliases:
+          - full_php56
 
 
   full_php73:
@@ -53,6 +66,11 @@ services:
       - /var/www:/var/www
     privileged: true
     restart: always
+    platform: linux/x86_64
+    networks:
+      full:
+        aliases:
+          - full_php73
 
 
   full_php74:
@@ -73,6 +91,11 @@ services:
       - /var/www:/var/www
     privileged: true
     restart: always
+    platform: linux/x86_64
+    networks:
+      full:
+        aliases:
+          - full_php74
 
 
 # 预留10个端口给 postgres 14120-14129
@@ -82,13 +105,19 @@ services:
     container_name: full_postgres
     image: postgres
     ports:
-      - 14120:5432
+      # - 14120:5432
+      - 5432:5432
     volumes:
       - ./data/postgresql/data:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: 123456
       ALLOW_IP_RANGE: 0.0.0.0/0 
     restart: always
+    platform: linux/x86_64
+    networks:
+      full:
+        aliases:
+          - full_postgres
 
     
 # 预留10个端口给 mysql 14130-14139
@@ -104,12 +133,18 @@ services:
       - ./log/mysql57:/var/log/mysql
       - ./etc/mysql57/my.cnf:/etc/my.cnf
     restart: always
+    platform: linux/x86_64
+    networks:
+      full:
+        aliases:
+          - full_mysql57
 
 
 # 预留10个端口给 rabbitmq 14140-14149
   full_rabbitmq:
     container_name: full_rabbitmq
     image: rabbitmq:management
+  # image: heidiks/rabbitmq-delayed-message-exchange:3.9.11-management
     ports:
       - 14140:15672
       - 14141:5672
@@ -124,12 +159,18 @@ services:
       - ./data/rabbitmq:/var/lib/rabbitmq 
       - ./log/rabbitmq:/var/log/rabbitmq/log
     restart: always
+    platform: linux/x86_64
+    networks:
+      full:
+        aliases:
+          - full_rabbitmq
 
 
 # 预留10个端口给 mongo 14150-14159
   full_mongo:
     container_name: full_mongo
-    image: mongo
+    # image: mongo
+    image: mongo:4.4
     ports:
       - 14150:27017
     environment:
@@ -141,54 +182,72 @@ services:
     # config: 
     #   - /etc/mongo/mongod.conf
     restart: always
+    platform: linux/x86_64
+    networks:
+      full:
+        aliases:
+          - full_mongo
 
 
-  full_mongo_express:
-    container_name: full_mongo_express
-    image: mongo-express
-    ports:
-      - 14151:8081
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: example
-      ME_CONFIG_MONGODB_URL: mongodb://root:example@full_mongo:27017/
-    restart: always
+  # full_mongo_express:
+  #   container_name: full_mongo_express
+  #   image: mongo-express
+  #   ports:
+  #     - 14151:8081
+  #   environment:
+  #     ME_CONFIG_MONGODB_ADMINUSERNAME: root
+  #     ME_CONFIG_MONGODB_ADMINPASSWORD: example
+  #     ME_CONFIG_MONGODB_URL: mongodb://root:example@full_mongo:27017/
+  #   restart: always
+  #   platform: linux/x86_64
+  #   networks:
+  #     full:
+  #       aliases:
+  #         - full_mongo_express
 
 
 # 预留10个端口给redis 14160-14169
-  full_php_redis_admin:
-    container_name: full_php_redis_admin
-    image: erikdubbelboer/phpredisadmin:latest
-    ports:
-      - 14160:80
-    environment:
-      REDIS_1_HOST: full_redis40
-      REDIS_1_NAME: full_redis40
-      REDIS_1_PORT: 6379
-      REDIS_1_AUTH: 123456
+  # full_php_redis_admin:
+  #   container_name: full_php_redis_admin
+  #   image: erikdubbelboer/phpredisadmin:latest
+  #   ports:
+  #     - 14160:80
+  #   environment:
+  #     REDIS_1_HOST: full_redis40
+  #     REDIS_1_NAME: full_redis40
+  #     REDIS_1_PORT: 6379
+  #     REDIS_1_AUTH: 123456
       
-      REDIS_2_HOST: full_redis50
-      REDIS_2_NAME: full_redis50
-      REDIS_2_PORT: 6379
-      REDIS_2_AUTH: 123456
-    restart: always
+  #     REDIS_2_HOST: full_redis50
+  #     REDIS_2_NAME: full_redis50
+  #     REDIS_2_PORT: 6379
+  #     REDIS_2_AUTH: 123456
+  #   restart: always
+  #   platform: linux/x86_64
+  #   networks:
+  #     full:
+  #       aliases:
+  #         - full_php_redis_admin
 
 
-  # redis-funny
-  full_redis40:
-    container_name: full_redis40
-    image: redis:4.0
-    ports:
-      - 14161:6379
-    volumes:
-      - ./etc/redis40:/etc/redis
-      - ./log/redis40:/var/log/redis
-      - ./data/redis40:/data
-    command: redis-server /etc/redis/redis.conf --appendonly yes
-    restart: always
+  # full_redis40:
+  #   container_name: full_redis40
+  #   image: redis:4.0
+  #   ports:
+  #     - 14161:6379
+  #   volumes:
+  #     - ./etc/redis40:/etc/redis
+  #     - ./log/redis40:/var/log/redis
+  #     - ./data/redis40:/data
+  #   command: redis-server /etc/redis/redis.conf --appendonly yes
+  #   restart: always
+  #   platform: linux/x86_64
+  #   networks:
+  #     full:
+  #       aliases:
+  #         - full_redis40
 
 
-  # redis-game
   full_redis50:
     container_name: full_redis50
     image: redis:5.0
@@ -200,14 +259,198 @@ services:
       - ./data/redis50:/data
     command: redis-server /etc/redis/redis.conf --appendonly yes
     restart: always
+    platform: linux/x86_64
+    networks:
+      full:
+        aliases:
+          - full_redis50
 
 
+# 预留10个端口给shenyu 14170-14179
+  # # full_shenyu_admin
+  # full_shenyu_admin:
+  #   container_name: full_shenyu_admin
+  #   image: apache/shenyu-admin:latest
+  #   ports:
+  #     - 14170:9095
+  #   volumes:
+  #     - ./data/shenyu/ext-lib:/opt/shenyu-admin/ext-lib 
+  #   environment:
+  #     SPRING_PROFILES_ACTIVE: mysql
+  #     spring.datasource.url : jdbc:mysql://full_mysql57:3306/shenyu?useUnicode=true&characterEncoding=utf-8&useSSL=false
+  #     spring.datasource.user: root
+  #     spring.datasource.password: root
+  #   restart: always
+  #   platform: linux/x86_64
+  #   networks:
+  #     full:
+  #       aliases:
+  #         - full_shenyu_admin
 
-# 预留10个端口给redis 14170-14179
-  # kyk_jenkins:
+  # # full_shenyu_bootstrap
+  # full_shenyu_bootstrap:
+  #   container_name: full_shenyu_bootstrap
+  #   image: apache/shenyu-bootstrap
+  #   ports:
+  #     - 14171:9195
+  #   restart: always
+  #   platform: linux/x86_64
+  #   networks:
+  #     full:
+  #       aliases:
+  #         - full_shenyu_bootstrap
+
+  # full_shenyu_admin
+  # full_shenyu_admin:
+  #   container_name: full_shenyu_admin
+  #   image: apache/shenyu-admin:latest
+  #   ports:
+  #     - 14170:9095
+  #   volumes:
+  #     - ./data/shenyu/shenyu-admin/logs/:/opt/shenyu-admin/logs
+  #     - ./data/shenyu/shenyu-admin/conf/:/opt/shenyu-admin/conf
+  #   healthcheck:
+  #     test: [ "CMD-SHELL", "wget -q -O - http://full_shenyu_admin:9095/actuator/health | grep UP || exit 1" ]
+  #     timeout: 2s
+  #     retries: 30
+  #   restart: always
+  #   platform: linux/x86_64
+  #   networks:
+  #     full:
+  #       aliases:
+  #         - full_shenyu_admin
+
+  # # full_shenyu_bootstrap
+  # full_shenyu_bootstrap:
+  #   container_name: full_shenyu_bootstrap
+  #   image: apache/shenyu-bootstrap:latest
+  #   ports:
+  #     - 14171:9195
+  #   volumes:
+  #     - ./data/shenyu/shenyu-bootstrap/logs/:/opt/shenyu-bootstrap/logs
+  #     - ./data/shenyu/shenyu-bootstrap/conf/:/opt/shenyu-bootstrap/conf
+  #   environment:
+  #     - shenyu.sync.websocket.urls=ws://full_shenyu_admin:9095/websocket
+  #   healthcheck:
+  #     test: [ "CMD", "wget", "http://full_shenyu_bootstrap:9195/actuator/health" ]
+  #     timeout: 2s
+  #     retries: 30
+  #   restart: always
+  #   platform: linux/x86_64
+  #   networks:
+  #     full:
+  #       aliases:
+  #         - full_shenyu_bootstrap
+
+
+# 预留10个端口给jenkins 14170-14179
+  # full_jenkins:
   #   container_name: kyk_jenkins
   #   image: jenkins/jenkins:lts
   #   ports:
   #     - 14170:8080
   #     - 14171:5000
   #   restart: always
+  #   platform: linux/x86_64
+  #   networks:
+  #     full:
+  #       aliases:
+  #         - full_jenkins
+
+
+# 预留10个端口给sqlserver 14180-14189
+  # full_sqlserver:
+  #   container_name: full_sqlserver
+  #   image: mcr.microsoft.com/mssql/server:2019-latest
+  #   ports:
+  #     - 1433:1433
+  #   volumes:
+  #     - ./data/sqlserver:/var/opt 
+  #   environment:
+  #     - ACCEPT_EULA=Y
+  #     - SA_PASSWORD=Apple@123
+  #   restart: always
+  #   platform: linux/x86_64
+  #   networks:
+  #     full:
+  #       aliases:
+  #         - full_sqlserver
+
+
+# 预留10个端口给 nats 14190-14199
+  full_nats:
+    container_name: full_nats
+    image: nats:latest
+    # image: zhusaidong/nacos-server-m1:2.0.3
+    ports:
+      - 4222:4222
+    restart: always
+    platform: linux/x86_64
+    networks:
+      full:
+        aliases:
+          - full_nats
+
+
+# rocketmq
+  full_rmqnamesrv:
+    image: rocketmqinc/rocketmq
+    container_name: full_rmqnamesrv
+    restart: always
+    ports:
+      - 9876:9876
+    volumes:
+      - ./log/rocketmq:/home/rocketmq/logs
+      - ./data/rocketmq:/home/rocketmq/store
+    command: sh mqnamesrv
+    platform: linux/amd64
+    networks:
+      full:
+        aliases:
+          - full_rmqnamesrv
+
+# 将 ./etc/rocketmq 下的 broker.conf.template 复制一份 改为broker.conf
+  full_rmqbroker:
+    image: rocketmqinc/rocketmq
+    container_name: full_rmqbroker
+    restart: always
+    ports:
+      - 10909:10909
+      - 10911:10911
+      - 10912:10912
+    volumes:
+      - ./log/rocketmq:/home/rocketmq/logs
+      - ./data/rocketmq:/home/rocketmq/store
+      - ./etc/rocketmq/broker.conf:/opt/rocketmq-4.4.0/conf/broker.conf
+    command: sh mqbroker -n full_rmqnamesrv:9876 -c ../conf/broker.conf
+    depends_on:
+      - full_rmqnamesrv
+    platform: linux/amd64
+    networks:
+      full:
+        aliases:
+          - full_rmqbroker
+
+
+  full_rocketmq_console:
+    image: styletang/rocketmq-console-ng
+    container_name: full_rocketmq_console
+    restart: always
+    ports:
+      - 9090:8080
+    depends_on:
+      - full_rmqnamesrv
+    environment:
+      - JAVA_OPTS= -Dlogging.level.root=info -Drocketmq.namesrv.addr=full_rmqnamesrv:9876 
+      - Dcom.rocketmq.sendMessageWithVIPChannel=false
+    platform: linux/amd64
+    networks:
+      full:
+        aliases:
+          - full_rocketmq_console
+
+
+networks:
+  full:
+    name: full
+    driver: bridge
