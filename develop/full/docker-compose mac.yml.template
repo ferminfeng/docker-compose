@@ -450,6 +450,66 @@ services:
           - full_rocketmq_console
 
 
+  rmqnamesrv:
+    image: foxiswho/rocketmq:4.8.0 #4.8.0没有区分namesrv和broker
+    container_name: rmqnamesrv
+    restart: always
+    ports:
+      - 9876:9876
+    volumes:
+      - ./log/rocketmq/rmqnamesrv:/home/rocketmq/rocketmq-4.8.0/logs
+      - ./data/rocketmq/rmqnamesrv:/home/rocketmq/rocketmq-4.8.0/store
+    environment:
+      JAVA_OPTS: "-Duser.home=/opt"
+      JAVA_OPT_EXT: "-server -Xms128M -Xmx128M -Xmn128m"
+    command: ["sh","mqnamesrv"]
+    platform: linux/amd64
+    networks: 
+      full:
+        aliases:
+          - rmqnamesrv
+
+  rmqbroker:
+    image: foxiswho/rocketmq:4.8.0
+    container_name: rmqbroker
+    ports:
+      - 10909:10909
+      - 10911:10911
+    volumes:
+      - ./log/rocketmq/broker:/home/rocketmq/rocketmq-4.8.0/logs
+      - ./data/rocketmq/broker:/home/rocketmq/rocketmq-4.8.0/store
+      - ./etc/rocketmq/broker.conf:/home/rocketmq/rocketmq-4.8.0/conf/broker.conf
+      - ./etc/rocketmq/broker-a.properties:/home/rocketmq/rocketmq-4.8.0/conf/2m-noslave/broker-a.properties
+    environment:
+      JAVA_OPTS: "-Duser.home=/opt"
+      JAVA_OPT_EXT: "-server -Xms128M -Xmx128M -Xmn128m"
+    command: ["sh","mqbroker","-c","/home/rocketmq/rocketmq-4.8.0/conf/broker.conf","-n","rmqnamesrv:9876","autoCreateTopicEnable=true"]
+    depends_on: #broker依赖namesvr启动，docker-compose会通过依赖自动编排启动顺序，被依赖的先启动，因此不需通过wait-for-it.sh进行手动编排了
+      - rmqnamesrv
+    platform: linux/amd64
+    networks: #指定容器连接哪个网络(自定义的rmq)，自定义网络名称必须在下面定义
+      full:
+        aliases:
+          - rmqbroker
+
+  rmqconsole:
+    image: styletang/rocketmq-console-ng:latest
+    container_name: rmqconsole
+    ports:
+      - 9090:8080
+    # volumes:
+    #   - /usr/local/soft/docker-containers/rocketmq-4.8.0/console/tmp_data:/home/rocketmq/rocketmq-4.8.0/console/tmp_data
+    environment:
+      JAVA_OPTS: "-Drocketmq.namesrv.addr=rmqnamesrv:9876 -Dcom.rocketmq.sendMessageWithVIPChannel=false"
+    depends_on:
+      - rmqnamesrv
+    platform: linux/amd64
+    networks: #指定容器连接哪个网络(自定义的rmq)，自定义网络名称必须在下面定义
+      full:
+        aliases:
+          - rmqconsole
+
+
 networks:
   full:
     name: full
