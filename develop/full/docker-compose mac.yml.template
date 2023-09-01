@@ -59,6 +59,7 @@ services:
     image: ferminfu/php73:v0.3
     ports:
       - 14101:9000
+      - 14104:9507
     volumes:
       - ./etc/php73/php-fpm.conf:/usr/local/etc/php-fpm.conf
       - ./log/php73:/var/log/php-fpm
@@ -141,29 +142,29 @@ services:
 
 
 # 预留10个端口给 rabbitmq 14140-14149
-  full_rabbitmq:
-    container_name: full_rabbitmq
-    image: rabbitmq:management
-  # image: heidiks/rabbitmq-delayed-message-exchange:3.9.11-management
-    ports:
-      - 14140:15672
-      - 14141:5672
-      - 14142:25672
-      - 14143:61613
-      - 14144:1883 
-    environment:
-      RABBITMQ_DEFAULT_USER: admin
-      RABBITMQ_DEFAULT_PASS: admin
-    volumes:
-      # - ./etc/rabbitmq:/etc/rabbitmq 
-      - ./data/rabbitmq:/var/lib/rabbitmq 
-      - ./log/rabbitmq:/var/log/rabbitmq/log
-    restart: always
-    platform: linux/x86_64
-    networks:
-      full:
-        aliases:
-          - full_rabbitmq
+  # full_rabbitmq:
+  #   container_name: full_rabbitmq
+  #   image: heidiks/rabbitmq-delayed-message-exchange:3.9.11-management
+  #   # image: rabbitmq:management
+  #   ports:
+  #     - 14140:15672
+  #     - 14141:5672
+  #     - 14142:25672
+  #     - 14143:61613
+  #     - 14144:1883 
+  #   environment:
+  #     RABBITMQ_DEFAULT_USER: admin
+  #     RABBITMQ_DEFAULT_PASS: admin
+  #   # volumes:
+  #     # - ./etc/rabbitmq:/etc/rabbitmq 
+  #     # - ./data/rabbitmq:/var/lib/rabbitmq 
+  #     # - ./log/rabbitmq:/var/log/rabbitmq/log
+  #   restart: always
+  #   platform: linux/x86_64
+  #   networks:
+  #     full:
+  #       aliases:
+  #         - full_rabbitmq
 
 
 # 预留10个端口给 mongo 14150-14159
@@ -230,40 +231,40 @@ services:
   #         - full_php_redis_admin
 
 
-  # full_redis40:
-  #   container_name: full_redis40
-  #   image: redis:4.0
-  #   ports:
-  #     - 14161:6379
-  #   volumes:
-  #     - ./etc/redis40:/etc/redis
-  #     - ./log/redis40:/var/log/redis
-  #     - ./data/redis40:/data
-  #   command: redis-server /etc/redis/redis.conf --appendonly yes
-  #   restart: always
-  #   platform: linux/x86_64
-  #   networks:
-  #     full:
-  #       aliases:
-  #         - full_redis40
-
-
-  full_redis50:
-    container_name: full_redis50
-    image: redis:5.0
+  full_redis40:
+    container_name: full_redis40
+    image: redis:4.0
     ports:
-      - 14162:6379
+      - 14161:6379
     volumes:
-      - ./etc/redis50:/etc/redis
-      - ./log/redis50:/var/log/redis
-      - ./data/redis50:/data
+      - ./etc/redis40:/etc/redis
+      - ./log/redis40:/var/log/redis
+      - ./data/redis40:/data
     command: redis-server /etc/redis/redis.conf --appendonly yes
     restart: always
     platform: linux/x86_64
     networks:
       full:
         aliases:
-          - full_redis50
+          - full_redis40
+
+
+  # full_redis50:
+  #   container_name: full_redis50
+  #   image: redis:5.0
+  #   ports:
+  #     - 14162:6379
+  #   volumes:
+  #     - ./etc/redis50:/etc/redis
+  #     - ./log/redis50:/var/log/redis
+  #     - ./data/redis50:/data
+  #   command: redis-server /etc/redis/redis.conf --appendonly yes
+  #   restart: always
+  #   platform: linux/x86_64
+  #   networks:
+  #     full:
+  #       aliases:
+  #         - full_redis50
 
 
 # 预留10个端口给shenyu 14170-14179
@@ -391,7 +392,7 @@ services:
         aliases:
           - full_nats
 
-
+# sh /home/rocketmq/time.sh
 # rocketmq
   full_rmqnamesrv:
     image: rocketmqinc/rocketmq
@@ -402,6 +403,7 @@ services:
     volumes:
       - ./log/rocketmq:/home/rocketmq/logs
       - ./data/rocketmq:/home/rocketmq/store
+      - ./etc/rocketmq/time.sh:/home/rocketmq/time.sh
     command: sh mqnamesrv
     platform: linux/amd64
     networks:
@@ -422,6 +424,7 @@ services:
       - ./log/rocketmq:/home/rocketmq/logs
       - ./data/rocketmq:/home/rocketmq/store
       - ./etc/rocketmq/broker.conf:/opt/rocketmq-4.4.0/conf/broker.conf
+      - ./etc/rocketmq/time.sh:/home/rocketmq/time.sh
     command: sh mqbroker -n full_rmqnamesrv:9876 -c ../conf/broker.conf
     depends_on:
       - full_rmqnamesrv
@@ -431,13 +434,14 @@ services:
         aliases:
           - full_rmqbroker
 
-
   full_rocketmq_console:
     image: styletang/rocketmq-console-ng
     container_name: full_rocketmq_console
     restart: always
     ports:
       - 9090:8080
+    volumes:
+      - ./etc/rocketmq/time.sh:/home/rocketmq/time.sh
     depends_on:
       - full_rmqnamesrv
     environment:
@@ -450,64 +454,62 @@ services:
           - full_rocketmq_console
 
 
-  rmqnamesrv:
-    image: foxiswho/rocketmq:4.8.0 #4.8.0没有区分namesrv和broker
-    container_name: rmqnamesrv
+  full_zookeeper:
+    image: wurstmeister/zookeeper
+    ports:
+      - 2181:2181
+    container_name: full_zookeeper
+    volumes:
+      - /etc/localtime:/etc/localtime
+    environment:
+      TZ: Asia/Shanghai
     restart: always
-    ports:
-      - 9876:9876
-    volumes:
-      - ./log/rocketmq/rmqnamesrv:/home/rocketmq/rocketmq-4.8.0/logs
-      - ./data/rocketmq/rmqnamesrv:/home/rocketmq/rocketmq-4.8.0/store
-    environment:
-      JAVA_OPTS: "-Duser.home=/opt"
-      JAVA_OPT_EXT: "-server -Xms128M -Xmx128M -Xmn128m"
-    command: ["sh","mqnamesrv"]
     platform: linux/amd64
-    networks: 
+    networks:
       full:
         aliases:
-          - rmqnamesrv
+          - full_zookeeper
 
-  rmqbroker:
-    image: foxiswho/rocketmq:4.8.0
-    container_name: rmqbroker
+  full_kafka:
+    image: wurstmeister/kafka
+    container_name: full_kafka
     ports:
-      - 10909:10909
-      - 10911:10911
-    volumes:
-      - ./log/rocketmq/broker:/home/rocketmq/rocketmq-4.8.0/logs
-      - ./data/rocketmq/broker:/home/rocketmq/rocketmq-4.8.0/store
-      - ./etc/rocketmq/broker.conf:/home/rocketmq/rocketmq-4.8.0/conf/broker.conf
-      - ./etc/rocketmq/broker-a.properties:/home/rocketmq/rocketmq-4.8.0/conf/2m-noslave/broker-a.properties
+      - 9092:9092
     environment:
-      JAVA_OPTS: "-Duser.home=/opt"
-      JAVA_OPT_EXT: "-server -Xms128M -Xmx128M -Xmn128m"
-    command: ["sh","mqbroker","-c","/home/rocketmq/rocketmq-4.8.0/conf/broker.conf","-n","rmqnamesrv:9876","autoCreateTopicEnable=true"]
-    depends_on: #broker依赖namesvr启动，docker-compose会通过依赖自动编排启动顺序，被依赖的先启动，因此不需通过wait-for-it.sh进行手动编排了
-      - rmqnamesrv
-    platform: linux/amd64
-    networks: #指定容器连接哪个网络(自定义的rmq)，自定义网络名称必须在下面定义
-      full:
-        aliases:
-          - rmqbroker
-
-  rmqconsole:
-    image: styletang/rocketmq-console-ng:latest
-    container_name: rmqconsole
-    ports:
-      - 9090:8080
-    # volumes:
-    #   - /usr/local/soft/docker-containers/rocketmq-4.8.0/console/tmp_data:/home/rocketmq/rocketmq-4.8.0/console/tmp_data
-    environment:
-      JAVA_OPTS: "-Drocketmq.namesrv.addr=rmqnamesrv:9876 -Dcom.rocketmq.sendMessageWithVIPChannel=false"
+      TZ: Asia/Shanghai
+      KAFKA_BROKER_ID: 0
+      KAFKA_ZOOKEEPER_CONNECT: "full_zookeeper:2181"
+      KAFKA_CREATE_TOPICS: "latestMsgToRedis:8:1,msgToPush:8:1,offlineMsgToMongoMysql:8:1"
+      KAFKA_ADVERTISED_LISTENERS: INSIDE://full_kafka:9092,OUTSIDE://CHANGE_TO_YOUR_EXTERNAL_IP:9092
+      KAFKA_LISTENERS: INSIDE://:9092,OUTSIDE://:9093
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: "INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT"
+      KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
     depends_on:
-      - rmqnamesrv
+      - full_zookeeper
+    restart: always
     platform: linux/amd64
-    networks: #指定容器连接哪个网络(自定义的rmq)，自定义网络名称必须在下面定义
+    networks:
       full:
         aliases:
-          - rmqconsole
+          - full_kafka
+
+
+  full_etcd:
+    image: appcelerator/etcd
+    ports:
+      - 22379:2379
+      - 22380:2380
+    container_name: full_etcd
+    environment:
+      # ALLOW_NONE_AUTHENTICATION: yes
+      ETCD_LISTEN_CLIENT_URLS: http://0.0.0.0:2379
+      ETCD_ADVERTISE_CLIENT_URLS: http://0.0.0.0:2379
+    restart: always
+    platform: linux/amd64
+    networks:
+      full:
+        aliases:
+          - full_etcd
 
 
 networks:
