@@ -462,6 +462,7 @@ services:
       - /etc/localtime:/etc/localtime
     environment:
       TZ: Asia/Shanghai
+      ALLOW_ANONYMOUS_LOGIN: yes
     restart: always
     platform: linux/amd64
     networks:
@@ -470,19 +471,28 @@ services:
           - full_zookeeper
 
   full_kafka:
-    image: wurstmeister/kafka
+#    image: wurstmeister/kafka
+    image: bitnami/kafka:latest
     container_name: full_kafka
     ports:
       - 9092:9092
+      - 9093:9093
     environment:
       TZ: Asia/Shanghai
-      KAFKA_BROKER_ID: 0
-      KAFKA_ZOOKEEPER_CONNECT: "full_zookeeper:2181"
-      KAFKA_CREATE_TOPICS: "latestMsgToRedis:8:1,msgToPush:8:1,offlineMsgToMongoMysql:8:1"
-      KAFKA_ADVERTISED_LISTENERS: INSIDE://full_kafka:9092,OUTSIDE://CHANGE_TO_YOUR_EXTERNAL_IP:9092
-      KAFKA_LISTENERS: INSIDE://:9092,OUTSIDE://:9093
-      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: "INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT"
-      KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
+#      KAFKA_BROKER_ID: 0
+#      KAFKA_ZOOKEEPER_CONNECT: "full_zookeeper:2181"
+#      KAFKA_CREATE_TOPICS: "latestMsgToRedis:8:1,msgToPush:8:1,offlineMsgToMongoMysql:8:1"
+#      KAFKA_ADVERTISED_LISTENERS: INSIDE://full_kafka:9092,OUTSIDE://CHANGE_TO_YOUR_EXTERNAL_IP:9092
+#      KAFKA_LISTENERS: INSIDE://:9092,OUTSIDE://:9093
+#      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: "INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT"
+#      KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
+      KAFKA_BROKER_ID: 1
+      KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_CFG_LISTENERS: CLIENT://:9092,EXTERNAL://:9093
+      KAFKA_CFG_ADVERTISED_LISTENERS: CLIENT://full_kafka:9092,EXTERNAL://localhost:9093 # 外网访问时，需要修改为外网主机的IP地址
+      KAFKA_CFG_ZOOKEEPER_CONNECT: full_zookeeper:2181
+      KAFKA_CFG_INTER_BROKER_LISTENER_NAME: CLIENT
+      ALLOW_PLAINTEXT_LISTENER: yes
     depends_on:
       - full_zookeeper
     restart: always
@@ -509,6 +519,24 @@ services:
       full:
         aliases:
           - full_etcd
+
+  full_kafka_manage:
+    image: dushixiang/kafka-map:latest
+    ports:
+      - 18080:8080
+    container_name: full_kafka_manage
+    volumes:
+      - ./data/kafkaManage:/usr/local/kafka-map/data
+    environment:
+      DEFAULT_USERNAME: admin
+      DEFAULT_PASSWORD: admin
+    restart: always
+    platform: linux/amd64
+    networks:
+      full:
+        aliases:
+          -   full_kafka_manage
+
 
 networks:
   full:
