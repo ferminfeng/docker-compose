@@ -190,34 +190,34 @@ services:
           - full_mongo
 
 
-      # full_mongo_express:
-      #   container_name: full_mongo_express
-      #   image: mongo-express
-      #   ports:
-      #     - 14151:8081
-      #   environment:
-      #     ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      #     ME_CONFIG_MONGODB_ADMINPASSWORD: example
-      #     ME_CONFIG_MONGODB_URL: mongodb://root:example@full_mongo:27017/
-      #   restart: always
-      #   platform: linux/x86_64
-      #   networks:
-      #     full:
-      #       aliases:
-      #         - full_mongo_express
+  # full_mongo_express:
+  #   container_name: full_mongo_express
+  #   image: mongo-express
+  #   ports:
+  #     - 14151:8081
+  #   environment:
+  #     ME_CONFIG_MONGODB_ADMINUSERNAME: root
+  #     ME_CONFIG_MONGODB_ADMINPASSWORD: example
+  #     ME_CONFIG_MONGODB_URL: mongodb://root:example@full_mongo:27017/
+  #   restart: always
+  #   platform: linux/x86_64
+  #   networks:
+  #     full:
+  #       aliases:
+  #         - full_mongo_express
 
 
-      # 预留10个端口给redis 14160-14169
-      # full_php_redis_admin:
-      #   container_name: full_php_redis_admin
-      #   image: erikdubbelboer/phpredisadmin:latest
-      #   ports:
-      #     - 14160:80
-      #   environment:
-      #     REDIS_1_HOST: full_redis40
-      #     REDIS_1_NAME: full_redis40
-      #     REDIS_1_PORT: 6379
-      #     REDIS_1_AUTH: 123456
+  # 预留10个端口给redis 14160-14169
+  # full_php_redis_admin:
+  #   container_name: full_php_redis_admin
+  #   image: erikdubbelboer/phpredisadmin:latest
+  #   ports:
+  #     - 14160:80
+  #   environment:
+  #     REDIS_1_HOST: full_redis40
+  #     REDIS_1_NAME: full_redis40
+  #     REDIS_1_PORT: 6379
+  #     REDIS_1_AUTH: 123456
 
   #     REDIS_2_HOST: full_redis50
   #     REDIS_2_NAME: full_redis50
