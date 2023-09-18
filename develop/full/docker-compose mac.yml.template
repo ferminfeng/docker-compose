@@ -142,35 +142,35 @@ services:
 
 
   # 预留10个端口给 rabbitmq 14140-14149
-  # full_rabbitmq:
-  #   container_name: full_rabbitmq
-  #   image: heidiks/rabbitmq-delayed-message-exchange:3.9.11-management
-  #   # image: rabbitmq:management
-  #   ports:
-  #     - 14140:15672
-  #     - 14141:5672
-  #     - 14142:25672
-  #     - 14143:61613
-  #     - 14144:1883
-  #   environment:
-  #     RABBITMQ_DEFAULT_USER: admin
-  #     RABBITMQ_DEFAULT_PASS: admin
-  #   # volumes:
-  #     # - ./etc/rabbitmq:/etc/rabbitmq
-  #     # - ./data/rabbitmq:/var/lib/rabbitmq
-  #     # - ./log/rabbitmq:/var/log/rabbitmq/log
-  #   restart: always
-  #   platform: linux/x86_64
-  #   networks:
-  #     full:
-  #       aliases:
-  #         - full_rabbitmq
+  full_rabbitmq:
+    container_name: full_rabbitmq
+    image: heidiks/rabbitmq-delayed-message-exchange:3.9.11-management
+    # image: rabbitmq:management
+    ports:
+      - 14140:15672
+      - 14141:5672
+      - 14142:25672
+      - 14143:61613
+      - 14144:1883
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: admin
+      # volumes:
+      # - ./etc/rabbitmq:/etc/rabbitmq
+      # - ./data/rabbitmq:/var/lib/rabbitmq
+      # - ./log/rabbitmq:/var/log/rabbitmq/log
+    restart: always
+    platform: linux/x86_64
+    networks:
+      full:
+        aliases:
+          - full_rabbitmq
 
 
   # 预留10个端口给 mongo 14150-14159
   full_mongo:
     container_name: full_mongo
-#    image: mongo
+    #    image: mongo
     image: mongo:4.4
     ports:
       - 14150:27017
@@ -190,45 +190,45 @@ services:
           - full_mongo
 
 
-  # full_mongo_express:
-  #   container_name: full_mongo_express
-  #   image: mongo-express
-  #   ports:
-  #     - 14151:8081
-  #   environment:
-  #     ME_CONFIG_MONGODB_ADMINUSERNAME: root
-  #     ME_CONFIG_MONGODB_ADMINPASSWORD: example
-  #     ME_CONFIG_MONGODB_URL: mongodb://root:example@full_mongo:27017/
-  #   restart: always
-  #   platform: linux/x86_64
-  #   networks:
-  #     full:
-  #       aliases:
-  #         - full_mongo_express
+    # full_mongo_express:
+    #   container_name: full_mongo_express
+    #   image: mongo-express
+    #   ports:
+    #     - 14151:8081
+    #   environment:
+    #     ME_CONFIG_MONGODB_ADMINUSERNAME: root
+    #     ME_CONFIG_MONGODB_ADMINPASSWORD: example
+    #     ME_CONFIG_MONGODB_URL: mongodb://root:example@full_mongo:27017/
+    #   restart: always
+    #   platform: linux/x86_64
+    #   networks:
+    #     full:
+    #       aliases:
+    #         - full_mongo_express
 
 
-  # 预留10个端口给redis 14160-14169
-  # full_php_redis_admin:
-  #   container_name: full_php_redis_admin
-  #   image: erikdubbelboer/phpredisadmin:latest
-  #   ports:
-  #     - 14160:80
-  #   environment:
-  #     REDIS_1_HOST: full_redis40
-  #     REDIS_1_NAME: full_redis40
-  #     REDIS_1_PORT: 6379
-  #     REDIS_1_AUTH: 123456
+    # 预留10个端口给redis 14160-14169
+    # full_php_redis_admin:
+    #   container_name: full_php_redis_admin
+    #   image: erikdubbelboer/phpredisadmin:latest
+    #   ports:
+    #     - 14160:80
+    #   environment:
+    #     REDIS_1_HOST: full_redis40
+    #     REDIS_1_NAME: full_redis40
+    #     REDIS_1_PORT: 6379
+    #     REDIS_1_AUTH: 123456
 
-  #     REDIS_2_HOST: full_redis50
-  #     REDIS_2_NAME: full_redis50
-  #     REDIS_2_PORT: 6379
-  #     REDIS_2_AUTH: 123456
-  #   restart: always
-  #   platform: linux/x86_64
-  #   networks:
-  #     full:
-  #       aliases:
-  #         - full_php_redis_admin
+    #     REDIS_2_HOST: full_redis50
+    #     REDIS_2_NAME: full_redis50
+    #     REDIS_2_PORT: 6379
+    #     REDIS_2_AUTH: 123456
+    #   restart: always
+    #   platform: linux/x86_64
+    #   networks:
+    #     full:
+    #       aliases:
+    #         - full_php_redis_admin
 
 
   full_redis40:
@@ -249,133 +249,55 @@ services:
           - full_redis40
 
 
-  # full_redis50:
-  #   container_name: full_redis50
-  #   image: redis:5.0
-  #   ports:
-  #     - 14162:6379
-  #   volumes:
-  #     - ./etc/redis50:/etc/redis
-  #     - ./log/redis50:/var/log/redis
-  #     - ./data/redis50:/data
-  #   command: redis-server /etc/redis/redis.conf --appendonly yes
-  #   restart: always
-  #   platform: linux/x86_64
-  #   networks:
-  #     full:
-  #       aliases:
-  #         - full_redis50
+    # full_redis50:
+    #   container_name: full_redis50
+    #   image: redis:5.0
+    #   ports:
+    #     - 14162:6379
+    #   volumes:
+    #     - ./etc/redis50:/etc/redis
+    #     - ./log/redis50:/var/log/redis
+    #     - ./data/redis50:/data
+    #   command: redis-server /etc/redis/redis.conf --appendonly yes
+    #   restart: always
+    #   platform: linux/x86_64
+    #   networks:
+    #     full:
+    #       aliases:
+    #         - full_redis50
+
+    # 预留10个端口给jenkins 14170-14179
+    # full_jenkins:
+    #   container_name: kyk_jenkins
+    #   image: jenkins/jenkins:lts
+    #   ports:
+    #     - 14170:8080
+    #     - 14171:5000
+    #   restart: always
+    #   platform: linux/x86_64
+    #   networks:
+    #     full:
+    #       aliases:
+    #         - full_jenkins
 
 
-  # 预留10个端口给shenyu 14170-14179
-  # # full_shenyu_admin
-  # full_shenyu_admin:
-  #   container_name: full_shenyu_admin
-  #   image: apache/shenyu-admin:latest
-  #   ports:
-  #     - 14170:9095
-  #   volumes:
-  #     - ./data/shenyu/ext-lib:/opt/shenyu-admin/ext-lib
-  #   environment:
-  #     SPRING_PROFILES_ACTIVE: mysql
-  #     spring.datasource.url : jdbc:mysql://full_mysql57:3306/shenyu?useUnicode=true&characterEncoding=utf-8&useSSL=false
-  #     spring.datasource.user: root
-  #     spring.datasource.password: root
-  #   restart: always
-  #   platform: linux/x86_64
-  #   networks:
-  #     full:
-  #       aliases:
-  #         - full_shenyu_admin
-
-  # # full_shenyu_bootstrap
-  # full_shenyu_bootstrap:
-  #   container_name: full_shenyu_bootstrap
-  #   image: apache/shenyu-bootstrap
-  #   ports:
-  #     - 14171:9195
-  #   restart: always
-  #   platform: linux/x86_64
-  #   networks:
-  #     full:
-  #       aliases:
-  #         - full_shenyu_bootstrap
-
-  # full_shenyu_admin
-  # full_shenyu_admin:
-  #   container_name: full_shenyu_admin
-  #   image: apache/shenyu-admin:latest
-  #   ports:
-  #     - 14170:9095
-  #   volumes:
-  #     - ./data/shenyu/shenyu-admin/logs/:/opt/shenyu-admin/logs
-  #     - ./data/shenyu/shenyu-admin/conf/:/opt/shenyu-admin/conf
-  #   healthcheck:
-  #     test: [ "CMD-SHELL", "wget -q -O - http://full_shenyu_admin:9095/actuator/health | grep UP || exit 1" ]
-  #     timeout: 2s
-  #     retries: 30
-  #   restart: always
-  #   platform: linux/x86_64
-  #   networks:
-  #     full:
-  #       aliases:
-  #         - full_shenyu_admin
-
-  # # full_shenyu_bootstrap
-  # full_shenyu_bootstrap:
-  #   container_name: full_shenyu_bootstrap
-  #   image: apache/shenyu-bootstrap:latest
-  #   ports:
-  #     - 14171:9195
-  #   volumes:
-  #     - ./data/shenyu/shenyu-bootstrap/logs/:/opt/shenyu-bootstrap/logs
-  #     - ./data/shenyu/shenyu-bootstrap/conf/:/opt/shenyu-bootstrap/conf
-  #   environment:
-  #     - shenyu.sync.websocket.urls=ws://full_shenyu_admin:9095/websocket
-  #   healthcheck:
-  #     test: [ "CMD", "wget", "http://full_shenyu_bootstrap:9195/actuator/health" ]
-  #     timeout: 2s
-  #     retries: 30
-  #   restart: always
-  #   platform: linux/x86_64
-  #   networks:
-  #     full:
-  #       aliases:
-  #         - full_shenyu_bootstrap
-
-
-  # 预留10个端口给jenkins 14170-14179
-  # full_jenkins:
-  #   container_name: kyk_jenkins
-  #   image: jenkins/jenkins:lts
-  #   ports:
-  #     - 14170:8080
-  #     - 14171:5000
-  #   restart: always
-  #   platform: linux/x86_64
-  #   networks:
-  #     full:
-  #       aliases:
-  #         - full_jenkins
-
-
-  # 预留10个端口给sqlserver 14180-14189
-  # full_sqlserver:
-  #   container_name: full_sqlserver
-  #   image: mcr.microsoft.com/mssql/server:2019-latest
-  #   ports:
-  #     - 1433:1433
-  #   volumes:
-  #     - ./data/sqlserver:/var/opt
-  #   environment:
-  #     - ACCEPT_EULA=Y
-  #     - SA_PASSWORD=Apple@123
-  #   restart: always
-  #   platform: linux/x86_64
-  #   networks:
-  #     full:
-  #       aliases:
-  #         - full_sqlserver
+    # 预留10个端口给sqlserver 14180-14189
+    # full_sqlserver:
+    #   container_name: full_sqlserver
+    #   image: mcr.microsoft.com/mssql/server:2019-latest
+    #   ports:
+    #     - 1433:1433
+    #   volumes:
+    #     - ./data/sqlserver:/var/opt
+    #   environment:
+    #     - ACCEPT_EULA=Y
+    #     - SA_PASSWORD=Apple@123
+    #   restart: always
+    #   platform: linux/x86_64
+    #   networks:
+    #     full:
+    #       aliases:
+    #         - full_sqlserver
 
 
   # 预留10个端口给 nats 14190-14199
@@ -479,13 +401,6 @@ services:
       - 9093:9093
     environment:
       TZ: Asia/Shanghai
-      #      KAFKA_BROKER_ID: 0
-      #      KAFKA_ZOOKEEPER_CONNECT: "full_zookeeper:2181"
-      #      KAFKA_CREATE_TOPICS: "latestMsgToRedis:8:1,msgToPush:8:1,offlineMsgToMongoMysql:8:1"
-      #      KAFKA_ADVERTISED_LISTENERS: INSIDE://full_kafka:9092,OUTSIDE://CHANGE_TO_YOUR_EXTERNAL_IP:9092
-      #      KAFKA_LISTENERS: INSIDE://:9092,OUTSIDE://:9093
-      #      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: "INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT"
-      #      KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
       KAFKA_BROKER_ID: 1
       KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
       KAFKA_CFG_LISTENERS: CLIENT://:9092,EXTERNAL://:9093
@@ -535,7 +450,7 @@ services:
     networks:
       full:
         aliases:
-          -   full_kafka_manage
+          - full_kafka_manage
 
 
 networks:
