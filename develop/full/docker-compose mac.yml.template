@@ -145,7 +145,8 @@ services:
   full_rabbitmq:
     container_name: full_rabbitmq
     image: heidiks/rabbitmq-delayed-message-exchange:3.9.11-management
-    # image: rabbitmq:management
+    # apple m1
+    #image: rabbitmq:3.8.14-management
     ports:
       - 14140:15672
       - 14141:5672
