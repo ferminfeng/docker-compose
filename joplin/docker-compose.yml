@@ -1,0 +1,35 @@
+version: "3"
+services:
+
+  webdav:
+    container_name: webdav
+    image: bytemark/webdav
+    volumes:
+      - ./data/webdav:/var/lib/dav
+    ports:
+      - 22300:80
+    environment:
+      SERVER_NAMES: xxxx.com
+      AUTH_TYPE: Basic
+      USERNAME: fermin
+      PASSWORD: qq63894398
+    restart: always
+    platform: linux/x86_64
+
+#  webdav_go:
+#    container_name: webdav_go
+#    image: hacdias/webdav:latest
+#    volumes:
+#      - ./data/webdav_go/media:/data/media
+#      - ./data/webdav_go/config:/config
+#    ports:
+#      - 22301:8081
+#    environment:
+#      SERVER_NAMES: xxxx.com
+#      AUTH_TYPE: Basic
+#      USERNAME: fermin
+#      PASSWORD: qq63894398
+#    restart: unless-stopped
+#    platform: linux/x86_64
+#    config: ./etc/webdav_goconfig.yaml
+
