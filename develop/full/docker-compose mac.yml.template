@@ -53,17 +53,16 @@ services:
         aliases:
           - full_php56
 
-
   full_php73:
     container_name: full_php73
-    image: ferminfu/php73:v0.3
-    ports:
-      - 14101:9000
-      - 14104:9507
+    #   build: ./etc/php73/
+    image: ferminfu/php73:v0.4
+#    ports:
+#      - 14101:9000
     volumes:
-      - ./etc/php73/php-fpm.conf:/usr/local/etc/php-fpm.conf
-      - ./log/php73:/var/log/php-fpm
-      - ./etc/php73/conf.d:/usr/local/etc/php/conf.d
+    #     - ./etc/php73/php-fpm.conf:/usr/local/etc/php-fpm.conf
+    #     - ./log/php73:/var/log/php-fpm
+    #     - ./etc/php73/conf.d:/usr/local/etc/php/conf.d
       - /var/www:/var/www
     privileged: true
     restart: always
@@ -78,17 +77,18 @@ services:
     container_name: full_php74
     # build: ./etc/php74/
     # image: php:7.4-fpm
-    image: ferminfu/php74:v1.1
-    ports:
-      - 14102:9000
-      - 14103:12000 # supervisor GUI
+#    image: ferminfu/php74:v1.1
+    image: ferminfu/php74_new:v0.1
+#    ports:
+#      - 14102:9000
+#      - 14103:12000 # supervisor GUI
     volumes:
-      - ./etc/php74/php/php-fpm.conf:/usr/local/etc/php-fpm.conf
-      - ./etc/php74/php/php.ini:/usr/local/etc/php/php.ini
-      - ./etc/php74/php/conf.d:/usr/local/etc/php/conf.d
-      - ./etc/php74/supervisor:/etc/supervisor
-      - ./log/php74:/var/log/php-fpm
-      - ./log/supervisor:/var/log/supervisor
+#      - ./etc/php74/php/php-fpm.conf:/usr/local/etc/php-fpm.conf
+#      - ./etc/php74/php/php.ini:/usr/local/etc/php/php.ini
+#      - ./etc/php74/php/conf.d:/usr/local/etc/php/conf.d
+#      - ./etc/php74/supervisor:/etc/supervisor
+#      - ./log/php74:/var/log/php-fpm
+#      - ./log/supervisor:/var/log/supervisor
       - /var/www:/var/www
     privileged: true
     restart: always
@@ -144,9 +144,10 @@ services:
   # 预留10个端口给 rabbitmq 14140-14149
   full_rabbitmq:
     container_name: full_rabbitmq
-    image: heidiks/rabbitmq-delayed-message-exchange:3.9.11-management
+#    image: heidiks/rabbitmq-delayed-message-exchange:3.9.11-management
+#    image: rabbitmq:management
     # apple m1
-    #image: rabbitmq:3.8.14-management
+    image: rabbitmq:3.8.14-management
     ports:
       - 14140:15672
       - 14141:5672
