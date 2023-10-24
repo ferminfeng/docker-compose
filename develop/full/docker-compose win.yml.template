@@ -78,7 +78,7 @@ services:
     container_name: full_php74
     # build: ./etc/php74/
     # image: php:7.4-fpm
-    image: ferminfu/php74:v1.0
+    image: ferminfu/php74:v1.1
     ports:
       - 14102:9000
       - 14103:12000 # supervisor GUI
