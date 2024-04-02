@@ -396,8 +396,8 @@ services:
         aliases:
           - full_zookeeper
 
+
   full_kafka:
-    #    image: wurstmeister/kafka
     image: bitnami/kafka:latest
     container_name: full_kafka
     ports:
@@ -405,15 +405,16 @@ services:
       - 9093:9093
     environment:
       TZ: Asia/Shanghai
-      KAFKA_BROKER_ID: 1
-      KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
-      KAFKA_CFG_LISTENERS: CLIENT://:9092,EXTERNAL://:9093
-      KAFKA_CFG_ADVERTISED_LISTENERS: CLIENT://full_kafka:9092,EXTERNAL://127.0.0.1:9093 # 外网访问时，需要修改为外网主机的IP地址
       KAFKA_CFG_ZOOKEEPER_CONNECT: full_zookeeper:2181
-      KAFKA_CFG_INTER_BROKER_LISTENER_NAME: CLIENT
-      ALLOW_PLAINTEXT_LISTENER: yes
-    depends_on:
-      - full_zookeeper
+      KAFKA_CFG_BROKER_ID: 2
+      KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT
+      KAFKA_CFG_LISTENERS: PLAINTEXT://:9092,EXTERNAL://:9093
+      KAFKA_CFG_ADVERTISED_LISTENERS: PLAINTEXT://127.0.0.1:9092,EXTERNAL://127.0.0.1:9093 # 外网访问时，需要修改为外网主机的IP地址
+      KAFKA_CFG_SECURITY_INTER_BROKER_PROTOCOL: PLAINTEXT
+      KAFKA_CFG_SSL_CLIENT_AUTH: none
+      KAFKA_CFG_SSL_ENDPOINT_IDENTIFICATION_ALGORITHM: HTTPS
+      KAFKA_CFG_SASL_ENABLED_MECHANISMS: PLAIN
+      KAFKA_CFG_SASL_MECHANISM_INTER_BROKER_PROTOCOL: PLAIN
     restart: always
     platform: linux/amd64
     networks:
