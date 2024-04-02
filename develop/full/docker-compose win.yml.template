@@ -74,24 +74,25 @@ services:
           - full_php73
 
 
+
   full_php74:
     container_name: full_php74
     # build: ./etc/php74/
     # image: php:7.4-fpm
-#    image: ferminfu/php74:v1.0
+    #    image: ferminfu/php74:v1.0
     image: ferminfu/php74_new:v0.1
     ports:
       - 14102:9000
-#      - 14103:12000 # supervisor GUI
+    #      - 14103:12000 # supervisor GUI
     volumes:
-#      - ./etc/php74/php/php-fpm.conf:/usr/local/etc/php-fpm.conf
-#      - ./etc/php74/php/php.ini:/usr/local/etc/php/php.ini
+      #      - ./etc/php74/php/php-fpm.conf:/usr/local/etc/php-fpm.conf
+      #      - ./etc/php74/php/php.ini:/usr/local/etc/php/php.ini
       - ./etc/php74/php/php.ini:/usr/local/etc/php/php.ini
       - ./etc/cacert.pem:/usr/local/etc/php/cacert.pem
-#      - ./etc/php74/php/conf.d:/usr/local/etc/php/conf.d
-#      - ./etc/php74/supervisor:/etc/supervisor
-#      - ./log/php74:/var/log/php-fpm
-#      - ./log/supervisor:/var/log/supervisor
+      #      - ./etc/php74/php/conf.d:/usr/local/etc/php/conf.d
+      #      - ./etc/php74/supervisor:/etc/supervisor
+      #      - ./log/php74:/var/log/php-fpm
+      #      - ./log/supervisor:/var/log/supervisor
       - D:/www:/var/www
     privileged: true
     restart: always
@@ -103,9 +104,9 @@ services:
 
 
 
-# 预留10个端口给 postgres 14120-14129
-# 将root创建为超级用户，login是指允许登录
-# CREATE ROLE root superuser PASSWORD '123456' login;
+  # 预留10个端口给 postgres 14120-14129
+  # 将root创建为超级用户，login是指允许登录
+  # CREATE ROLE root superuser PASSWORD '123456' login;
   full_postgres:
     container_name: full_postgres
     image: postgres
@@ -174,7 +175,7 @@ services:
   # 预留10个端口给 mongo 14150-14159
   full_mongo:
     container_name: full_mongo
-#    image: mongo
+    #    image: mongo
     image: mongo:4.4
     ports:
       - 14150:27017
@@ -483,17 +484,11 @@ services:
       - 9093:9093
     environment:
       TZ: Asia/Shanghai
-      #      KAFKA_BROKER_ID: 0
-      #      KAFKA_ZOOKEEPER_CONNECT: "full_zookeeper:2181"
-      #      KAFKA_CREATE_TOPICS: "latestMsgToRedis:8:1,msgToPush:8:1,offlineMsgToMongoMysql:8:1"
-      #      KAFKA_ADVERTISED_LISTENERS: INSIDE://full_kafka:9092,OUTSIDE://CHANGE_TO_YOUR_EXTERNAL_IP:9092
-      #      KAFKA_LISTENERS: INSIDE://:9092,OUTSIDE://:9093
-      #      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: "INSIDE:PLAINTEXT,OUTSIDE:PLAINTEXT"
-      #      KAFKA_INTER_BROKER_LISTENER_NAME: INSIDE
       KAFKA_BROKER_ID: 1
       KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: CLIENT:PLAINTEXT,EXTERNAL:PLAINTEXT
       KAFKA_CFG_LISTENERS: CLIENT://:9092,EXTERNAL://:9093
       KAFKA_CFG_ADVERTISED_LISTENERS: CLIENT://full_kafka:9092,EXTERNAL://127.0.0.1:9093 # 外网访问时，需要修改为外网主机的IP地址
+      #KAFKA_CFG_ADVERTISED_LISTENERS: CLIENT://full_kafka:9092,EXTERNAL://183.158.75.163:19093 # 外网访问时，需要修改为外网主机的IP地址
       KAFKA_CFG_ZOOKEEPER_CONNECT: full_zookeeper:2181
       KAFKA_CFG_INTER_BROKER_LISTENER_NAME: CLIENT
       ALLOW_PLAINTEXT_LISTENER: yes
