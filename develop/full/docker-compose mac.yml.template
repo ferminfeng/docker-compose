@@ -53,16 +53,17 @@ services:
         aliases:
           - full_php56
 
+
   full_php73:
     container_name: full_php73
-    #   build: ./etc/php73/
-    image: ferminfu/php73:v0.4
-#    ports:
-#      - 14101:9000
+    image: ferminfu/php73:v0.3
+    ports:
+      - 14101:9000
+      - 14104:9507
     volumes:
-    #     - ./etc/php73/php-fpm.conf:/usr/local/etc/php-fpm.conf
-    #     - ./log/php73:/var/log/php-fpm
-    #     - ./etc/php73/conf.d:/usr/local/etc/php/conf.d
+      - ./etc/php73/php-fpm.conf:/usr/local/etc/php-fpm.conf
+      - ./log/php73:/var/log/php-fpm
+      - ./etc/php73/conf.d:/usr/local/etc/php/conf.d
       - /var/www:/var/www
     privileged: true
     restart: always
@@ -81,16 +82,15 @@ services:
     image: ferminfu/php74_new:v0.1
     ports:
       - 14102:9000
-#      - 14103:12000 # supervisor GUI
+      - 14103:12000 # supervisor GUI
     volumes:
 #      - ./etc/php74/php/php-fpm.conf:/usr/local/etc/php-fpm.conf
 #      - ./etc/php74/php/php.ini:/usr/local/etc/php/php.ini
       - ./etc/php74/php/php.ini:/usr/local/etc/php/php.ini
       - ./etc/cacert.pem:/usr/local/etc/php/cacert.pem
 #      - ./etc/php74/php/conf.d:/usr/local/etc/php/conf.d
-#      - ./etc/php74/supervisor:/etc/supervisor
-#      - ./log/php74:/var/log/php-fpm
-#      - ./log/supervisor:/var/log/supervisor
+      - ./etc/php74/supervisor/supervisord.conf:/etc/supervisord.conf
+      - ./log/php74:/var/log
       - /var/www:/var/www
     privileged: true
     restart: always
@@ -253,22 +253,23 @@ services:
           - full_redis40
 
 
-    # full_redis50:
-    #   container_name: full_redis50
-    #   image: redis:5.0
-    #   ports:
-    #     - 14162:6379
-    #   volumes:
-    #     - ./etc/redis50:/etc/redis
-    #     - ./log/redis50:/var/log/redis
-    #     - ./data/redis50:/data
-    #   command: redis-server /etc/redis/redis.conf --appendonly yes
-    #   restart: always
-    #   platform: linux/x86_64
-    #   networks:
-    #     full:
-    #       aliases:
-    #         - full_redis50
+#  full_redis50:
+#   container_name: full_redis50
+#   image: redis:5.0
+#   ports:
+#     - 14162:6379
+#   volumes:
+#     - ./etc/redis50:/etc/redis
+#     - ./log/redis50:/var/log/redis
+#     - ./data/redis50:/data
+#   command: redis-server /etc/redis/redis.conf --appendonly yes
+#   restart: always
+#   platform: linux/x86_64
+#   networks:
+#     full:
+#       aliases:
+#         - full_redis50
+
 
     # 预留10个端口给jenkins 14170-14179
     # full_jenkins:
@@ -317,6 +318,7 @@ services:
         aliases:
           - full_nats
 
+
   # sh /home/rocketmq/time.sh
   # rocketmq
   full_rmqnamesrv:
@@ -326,8 +328,8 @@ services:
     ports:
       - 9876:9876
     volumes:
-      - ./log/rocketmq:/home/rocketmq/logs
-      - ./data/rocketmq:/home/rocketmq/store
+#      - ./log/rocketmq:/home/rocketmq/logs
+#      - ./data/rocketmq:/home/rocketmq/store
       - ./etc/rocketmq/time.sh:/home/rocketmq/time.sh
     command: sh mqnamesrv
     platform: linux/x86_64
@@ -335,6 +337,7 @@ services:
       full:
         aliases:
           - full_rmqnamesrv
+
 
   # 将 ./etc/rocketmq 下的 broker.conf.template 复制一份 改为broker.conf
   full_rmqbroker:
@@ -346,8 +349,8 @@ services:
       - 10911:10911
       - 10912:10912
     volumes:
-      - ./log/rocketmq:/home/rocketmq/logs
-      - ./data/rocketmq:/home/rocketmq/store
+#      - ./log/rocketmq:/home/rocketmq/logs
+#      - ./data/rocketmq:/home/rocketmq/store
       - ./etc/rocketmq/broker.conf:/opt/rocketmq-4.4.0/conf/broker.conf
       - ./etc/rocketmq/time.sh:/home/rocketmq/time.sh
     command: sh mqbroker -n full_rmqnamesrv:9876 -c ../conf/broker.conf
@@ -358,6 +361,7 @@ services:
       full:
         aliases:
           - full_rmqbroker
+
 
   full_rocketmq_console:
     image: styletang/rocketmq-console-ng
@@ -409,6 +413,7 @@ services:
       KAFKA_CFG_BROKER_ID: 2
       KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,EXTERNAL:PLAINTEXT
       KAFKA_CFG_LISTENERS: PLAINTEXT://:9092,EXTERNAL://:9093
+#      KAFKA_CFG_ADVERTISED_LISTENERS: PLAINTEXT://full_kafka:9092,EXTERNAL://full_kafka:9093 # 外网访问时，需要修改为外网主机的IP地址
       KAFKA_CFG_ADVERTISED_LISTENERS: PLAINTEXT://127.0.0.1:9092,EXTERNAL://127.0.0.1:9093 # 外网访问时，需要修改为外网主机的IP地址
       KAFKA_CFG_SECURITY_INTER_BROKER_PROTOCOL: PLAINTEXT
       KAFKA_CFG_SSL_CLIENT_AUTH: none
@@ -440,6 +445,7 @@ services:
         aliases:
           - full_etcd
 
+
   full_kafka_manage:
     image: dushixiang/kafka-map:latest
     ports:
@@ -456,6 +462,23 @@ services:
       full:
         aliases:
           - full_kafka_manage
+
+
+  full_nacos:
+    image: nacos/nacos-server:latest
+    ports:
+      - 8848:8848
+    environment:
+      JVM_XMS: 256m
+      JVM_XMX: 256m
+      MODE: standalone
+    restart: always
+    platform: linux/amd64
+    networks:
+      full:
+        aliases:
+          - full_kafka_manage
+#    --privileged=true
 
 
 networks:
